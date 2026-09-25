@@ -79,6 +79,40 @@ export function PageHero({ num, eyebrow, title, sub }) {
   );
 }
 
+export const TOOL_SLUGS = {
+  "React": "react", "Next.js": "nextdotjs", "TypeScript": "typescript", "JavaScript": "javascript",
+  "Node.js": "nodejs", "Remix": "remix", "Vite": "vite", "Vue": "vuedotjs", "Svelte": "svelte",
+  "Astro": "astro", "Tailwind CSS": "tailwindcss", "Sass": "sass", "Framer": "framer",
+  "Webflow": "webflow", "Figma": "figma", "LottieFiles": "lottiefiles", "Three.js": "threedotjs",
+  "Storybook": "storybook", "shadcn": "shadcnui", "shadcn/ui": "shadcnui", "Radix UI": "radixui",
+  "Prisma": "prisma", "Supabase": "supabase", "Firebase": "firebase", "PostgreSQL": "postgresql",
+  "MySQL": "mysql", "MongoDB": "mongodb", "Redis": "redis", "PlanetScale": "planetscale",
+  "Vercel": "vercel", "Netlify": "netlify", "Cloudflare": "cloudflare", "AWS": "amazonaws",
+  "Google Cloud": "googlecloud", "Docker": "docker", "Kubernetes": "kubernetes", "GitHub": "github",
+  "GitLab": "gitlab", "Expo": "expo", "Flutter": "flutter", "Swift": "swift", "Kotlin": "kotlin",
+  "Python": "python", "Django": "django", "FastAPI": "fastapi", "OpenAI": "openai",
+  "Anthropic": "anthropic", "Hugging Face": "huggingface", "LangChain": "langchain",
+  "Pinecone": "pinecone", "Stripe": "stripe", "Twilio": "twilio", "Sentry": "sentry",
+  "PostHog": "posthog", "Algolia": "algolia", "Auth0": "auth0", "Shopify": "shopify",
+  "Sanity": "sanity", "Kafka": "apachekafka", "ClickHouse": "clickhouse", "Motion": "motion",
+  "Framer Motion": "framer", "React Native": "reactnative",
+};
+
+export function TechChip({ name, small }) {
+  const slug = TOOL_SLUGS[name];
+  const mask = slug ? `url(https://cdn.simpleicons.org/${slug}/000)` : null;
+  return (
+    <span className={`chip ${small ? "sm" : ""}`}>
+      {slug ? (
+        <span className="tool-ico" style={{ maskImage: mask, WebkitMaskImage: mask }} />
+      ) : (
+        <span className="dot" />
+      )}
+      {name}
+    </span>
+  );
+}
+
 export function Icon({ name, size = 24 }) {
   const paths = {
     ai: (

@@ -1,18 +1,34 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { HERO, LINKS, STACK, CERTS } from "../data/content";
-import { Counter, EASE, Icon, Reveal, SectionHead } from "./ui";
+import { HERO, LINKS, STACK } from "../data/content";
+import { Counter, EASE, Icon, Reveal, SectionHead, TechChip } from "./ui";
 
 const EMPHASIS = new Set(["AI-powered", "digital", "products"]);
-const MotionLink = motion(Link);
+
+const PILLS = [
+  ["Services", "/services"],
+  ["Work", "/work"],
+  ["Team", "/team"],
+  ["Contact", "/contact"],
+];
+
+const CODE_LINES = [
+  { type: "cmd", text: "$ devowise verify --production" },
+  { type: "ok", text: "✓ AI agents & evals ......... passed" },
+  { type: "ok", text: "✓ auth, billing, tenants .... passed" },
+  { type: "ok", text: "✓ edge performance .......... 98/100" },
+  { type: "ok", text: "✓ design system coverage .... 100%" },
+  { type: "out", text: "→ ship approved. zero ceremony." },
+];
 
 export function Hero() {
   const words = HERO.title.split(" ");
   return (
     <section className="hero" id="top">
-      <div className="hero-video-wrap" aria-hidden="true">
-        <video autoPlay muted loop playsInline src="/hero.mp4" />
-        <div className="hero-grid" />
+      <div className="hero-glow" aria-hidden="true">
+        <span className="glow g1" />
+        <span className="glow g2" />
+        <span className="glow g3" />
       </div>
       <div className="container">
         <div className="hero-inner">
@@ -35,7 +51,7 @@ export function Hero() {
                       className={`word ${EMPHASIS.has(w) ? "grad-text" : ""}`}
                       initial={{ y: "112%" }}
                       animate={{ y: 0 }}
-                      transition={{ duration: 0.75, delay: 0.25 + i * 0.055, ease: EASE }}
+                      transition={{ duration: 0.75, delay: 0.25 + i * 0.05, ease: EASE }}
                     >
                       {w}
                     </motion.span>
@@ -48,51 +64,70 @@ export function Hero() {
               className="sub"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.9, ease: EASE }}
+              transition={{ duration: 0.7, delay: 0.8, ease: EASE }}
             >
               {HERO.sub}
             </motion.p>
 
             <motion.div
-              className="hero-ctas"
+              className="route-pills"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 1.05, ease: EASE }}
+              transition={{ duration: 0.7, delay: 0.95, ease: EASE }}
             >
-              <a className="btn btn-solid" href={LINKS.calendly} target="_blank" rel="noreferrer">
-                Book a Call <span className="arr"><Icon name="arrow" size={16} /></span>
-              </a>
-              <Link className="btn" to="/work">View Work</Link>
+              {PILLS.map(([label, to]) => (
+                <motion.span key={to} whileHover={{ y: -3, scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                  <Link className="pill" to={to}>{label}</Link>
+                </motion.span>
+              ))}
+              <motion.span whileHover={{ y: -3, scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                <a className="pill solid" href={LINKS.calendly} target="_blank" rel="noreferrer">
+                  Book a Call
+                </a>
+              </motion.span>
             </motion.div>
           </div>
 
-          <div className="hero-side">
-            <MotionLink
-              className="spin-badge"
-              to="/work"
-              aria-label="View technology stack and work"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
-            >
-              <svg viewBox="0 0 200 200">
-                <defs>
-                  <path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
-                </defs>
-                <text>
-                  <textPath href="#circ">We Build What Others Imagine • Devowise •&#160;</textPath>
-                </text>
-              </svg>
-              <span className="core"><Icon name="arrow" size={26} /></span>
-            </MotionLink>
-          </div>
+          <motion.div
+            className="code-panel"
+            initial={{ opacity: 0, y: 26, rotate: 1.5 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            transition={{ duration: 0.9, delay: 0.7, ease: EASE }}
+          >
+            <div className="code-head">
+              <span className="cdot c1" /><span className="cdot c2" /><span className="cdot c3" />
+              <span className="code-title">devowise — production check</span>
+              <span className="live"><span className="pulse" /> live</span>
+            </div>
+            <div className="code-body">
+              {CODE_LINES.map((l, i) => (
+                <motion.span
+                  key={l.text}
+                  className={`code-line ${l.type}`}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 1.1 + i * 0.45, ease: EASE }}
+                >
+                  {l.text}
+                </motion.span>
+              ))}
+              <motion.span
+                className="code-line caret"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1 + CODE_LINES.length * 0.45 }}
+              >
+                $ <span className="blink">▍</span>
+              </motion.span>
+            </div>
+          </motion.div>
         </div>
 
         <motion.div
           className="hero-stats"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: EASE }}
+          transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
         >
           {HERO.stats.map((s) => (
             <div className="stat" key={s.label}>
@@ -106,34 +141,13 @@ export function Hero() {
   );
 }
 
-/* Devsinc-style moving logo strip (certifications & partners) */
-export function LogoBar() {
-  const items = CERTS.items.map((c) => c.name);
-  const doubled = [...items, ...items];
-  return (
-    <div className="logo-bar" aria-hidden="true">
-      <div className="logo-bar-track">
-        {doubled.map((name, i) => (
-          <span className="logo-item" key={`${name}-${i}`}>
-            <span className="mark" />
-            {name}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function MarqueeRow({ tools, rev }) {
   const doubled = [...tools, ...tools];
   return (
     <div className={`marquee ${rev ? "rev" : ""}`}>
       <div className="marquee-track">
         {doubled.map((t, i) => (
-          <span className="chip" key={`${t}-${i}`}>
-            <span className="dot" />
-            {t}
-          </span>
+          <TechChip name={t} key={`${t}-${i}`} />
         ))}
       </div>
     </div>

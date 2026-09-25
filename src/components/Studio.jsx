@@ -8,13 +8,18 @@ export function Process({ num = "03" }) {
     <section id="process">
       <div className="container">
         <SectionHead num={num} eyebrow={PROCESS.eyebrow} title={PROCESS.title} />
-        <div className="process-stack">
+        <div className="pipeline">
           {PROCESS.steps.map((s, i) => (
-            <div className="step" key={s.n} style={{ top: `calc(var(--nav-h) + ${20 + i * 22}px)` }}>
-              <div className="n">{s.n}</div>
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
-            </div>
+            <Reveal key={s.n} delay={i * 0.12}>
+              <div className="pipe-step">
+                <div className="pipe-node">
+                  <span className="pipe-n">{s.n}</span>
+                  {i < PROCESS.steps.length - 1 && <span className="pipe-line" />}
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

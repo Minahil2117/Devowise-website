@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
-import { CAPABILITIES, CERTS, WORK, LINKS } from "../data/content";
+import { CAPABILITIES, CERTS, WORK, LINKS, projectSlug } from "../data/content";
 import { EASE, Icon, Reveal, SectionHead } from "./ui";
 
 export function Capabilities({ num = "01" }) {
@@ -89,11 +89,9 @@ export function Work({ limit = 0, preview = true, num = "02" }) {
         >
           {projects.map((p, i) => (
             <Reveal key={p.name} delay={0.03 * i}>
-              <a
+              <Link
                 className="work-row"
-                href={p.url}
-                target="_blank"
-                rel="noreferrer"
+                to={`/work/${projectSlug(p.name)}`}
                 onMouseEnter={() => preview && setHovered(p)}
               >
                 <span className="w-idx">/ {String(i + 1).padStart(2, "0")}</span>
@@ -105,7 +103,7 @@ export function Work({ limit = 0, preview = true, num = "02" }) {
                 </span>
                 <span className="w-desc">{p.desc}</span>
                 <span className="w-arrow"><Icon name="arrow" size={26} /></span>
-              </a>
+              </Link>
             </Reveal>
           ))}
 

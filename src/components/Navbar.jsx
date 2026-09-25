@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { DIRECTORY, LINKS, GROUP_PATH, slugOf } from "../data/content";
+import { DIRECTORY, GROUP_PATH, slugOf } from "../data/content";
 import { Icon, EASE } from "./ui";
 
 const NAV_GROUPS = DIRECTORY.groups.slice(0, 5).map((g) => ({
@@ -9,12 +9,6 @@ const NAV_GROUPS = DIRECTORY.groups.slice(0, 5).map((g) => ({
   path: GROUP_PATH[g.name],
   items: g.items,
 }));
-
-const ROUTES = [
-  ["Work", "/work"],
-  ["Team", "/team"],
-  ["Contact", "/contact"],
-];
 
 export default function Navbar({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
@@ -35,11 +29,7 @@ export default function Navbar({ theme, onToggleTheme }) {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  const openMenu = (name) => {
-    clearTimeout(closeTimer.current);
-    setActive(name);
-  };
-
+  const openMenu = (name) => { clearTimeout(closeTimer.current); setActive(name); };
   const scheduleClose = () => {
     clearTimeout(closeTimer.current);
     closeTimer.current = setTimeout(() => setActive(null), 140);
@@ -49,9 +39,9 @@ export default function Navbar({ theme, onToggleTheme }) {
     <>
       <header className={`nav ${scrolled || active ? "scrolled" : ""} ${mobileOpen ? "open" : ""}`}>
         <div className="nav-inner">
-          {/* Logo image removed; only the website name is shown. */}
           <Link className="brand" to="/" aria-label="Devowise home">
-            <span className="wordmark">DEVOWISE</span>
+            <img src="/logo.png" alt="Devowise logo" />
+            <span className="wordmark">DEVO<b>WISE</b></span>
           </Link>
 
           <nav className="nav-links" aria-label="Primary">
@@ -70,7 +60,6 @@ export default function Navbar({ theme, onToggleTheme }) {
                   {g.name}
                   <span className="chev"><Icon name="chev" size={14} /></span>
                 </button>
-
                 <AnimatePresence>
                   {active === g.name && (
                     <motion.div
@@ -81,11 +70,7 @@ export default function Navbar({ theme, onToggleTheme }) {
                       transition={{ duration: 0.25, ease: EASE }}
                     >
                       {g.items.map(([label, url]) => (
-                        <Link
-                          key={label}
-                          to={`/${g.path}/${slugOf(url)}`}
-                          onClick={() => setActive(null)}
-                        >
+                        <Link key={label} to={`/${g.path}/${slugOf(url)}`} onClick={() => setActive(null)}>
                           <span className="dot" />
                           {label}
                         </Link>
@@ -98,25 +83,10 @@ export default function Navbar({ theme, onToggleTheme }) {
                 </AnimatePresence>
               </div>
             ))}
-
-            {ROUTES.map(([label, to]) => (
-              <NavLink
-                key={to}
-                to={to}
-                className={({ isActive }) => `nav-link ${isActive ? "router-active" : ""}`}
-              >
-                {label}
-              </NavLink>
-            ))}
           </nav>
 
           <div className="nav-actions">
-            <button
-              className="theme-toggle"
-              onClick={onToggleTheme}
-              aria-label="Toggle dark / light mode"
-              title="Toggle theme"
-            >
+            <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle dark / light mode" title="Toggle theme">
               <motion.span
                 key={theme}
                 initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
@@ -127,22 +97,7 @@ export default function Navbar({ theme, onToggleTheme }) {
                 <Icon name={theme === "dark" ? "sun" : "moon"} size={19} />
               </motion.span>
             </button>
-
-            <a
-              className="btn btn-solid"
-              style={{ padding: "11px 22px" }}
-              href={LINKS.calendly}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Book a Call
-            </a>
-
-            <button
-              className="hamburger"
-              aria-label="Open menu"
-              onClick={() => setMobileOpen(true)}
-            >
+            <button className="hamburger" aria-label="Open menu" onClick={() => setMobileOpen(true)}>
               <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none">
                 <path d="M4 7h16M4 12h16M4 17h16" />
               </svg>
@@ -161,52 +116,20 @@ export default function Navbar({ theme, onToggleTheme }) {
             transition={{ duration: 0.3, ease: EASE }}
           >
             <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
-              <button
-                className="hamburger"
-                style={{ display: "grid" }}
-                aria-label="Close menu"
-                onClick={() => setMobileOpen(false)}
-              >
+              <button className="hamburger" style={{ display: "grid" }} aria-label="Close menu" onClick={() => setMobileOpen(false)}>
                 <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none">
                   <path d="M6 6l12 12M18 6L6 18" />
                 </svg>
               </button>
             </div>
-
-            {ROUTES.map(([label, to]) => (
-              <div className="m-group" key={to}>
-                <Link
-                  to={to}
-                  onClick={() => setMobileOpen(false)}
-                  style={{
-                    display: "block",
-                    padding: "16px 4px",
-                    fontFamily: "var(--font-display)",
-                    fontSize: 18,
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {label}
-                </Link>
-              </div>
-            ))}
-
             {NAV_GROUPS.map((g) => (
               <div className="m-group" key={g.name}>
-                <button
-                  className="m-head"
-                  onClick={() => setMobileAcc(mobileAcc === g.name ? null : g.name)}
-                >
+                <button className="m-head" onClick={() => setMobileAcc(mobileAcc === g.name ? null : g.name)}>
                   {g.name}
-                  <motion.span
-                    animate={{ rotate: mobileAcc === g.name ? 45 : 0 }}
-                    style={{ color: "var(--accent-text)", display: "grid" }}
-                  >
+                  <motion.span animate={{ rotate: mobileAcc === g.name ? 45 : 0 }} style={{ color: "var(--accent-text)", display: "grid" }}>
                     <Icon name="plus" size={18} />
                   </motion.span>
                 </button>
-
                 <AnimatePresence initial={false}>
                   {mobileAcc === g.name && (
                     <motion.div
@@ -218,19 +141,9 @@ export default function Navbar({ theme, onToggleTheme }) {
                       style={{ overflow: "hidden" }}
                     >
                       {g.items.map(([label, url]) => (
-                        <Link
-                          key={label}
-                          to={`/${g.path}/${slugOf(url)}`}
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {label}
-                        </Link>
+                        <Link key={label} to={`/${g.path}/${slugOf(url)}`} onClick={() => setMobileOpen(false)}>{label}</Link>
                       ))}
-                      <Link
-                        to={`/${g.path}`}
-                        style={{ color: "var(--accent-text)" }}
-                        onClick={() => setMobileOpen(false)}
-                      >
+                      <Link to={`/${g.path}`} style={{ color: "var(--accent-text)" }} onClick={() => setMobileOpen(false)}>
                         All {g.name} →
                       </Link>
                     </motion.div>
@@ -238,16 +151,6 @@ export default function Navbar({ theme, onToggleTheme }) {
                 </AnimatePresence>
               </div>
             ))}
-
-            <a
-              className="btn btn-solid"
-              style={{ width: "100%", marginTop: 22 }}
-              href={LINKS.calendly}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Book a Call
-            </a>
           </motion.div>
         )}
       </AnimatePresence>

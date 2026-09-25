@@ -163,6 +163,81 @@ export const WORK = {
   ],
 };
 
+export const PROJECT_DETAILS = {
+  mindmesh: {
+    tagline: "An editorial-grade travel and lifestyle platform powered by AI for smarter discovery and personalization.",
+    overview: "At Devowise Studios, we designed and developed MindMesh, a modern blogging platform created for a travel and lifestyle creator seeking a visually immersive and easy-to-manage publishing experience. The site combines engaging storytelling with high performance, letting readers explore content seamlessly while giving the client complete control over publishing through a headless CMS — elevated with AI-generated visuals, scroll-driven interactions, and lightweight animations.",
+    challenge: "Modern blogs compete for attention in an increasingly visual digital landscape. The platform had to deliver an immersive reading experience, simplify content management for non-technical users, balance engaging animations with strong performance, improve discoverability, and build a scalable architecture for future growth.",
+    solution: "We led the project from strategy through deployment: Discovery & UX Strategy (a journey of Discover, Read, Explore, Return), Information Architecture, editorial-inspired UI built with Next.js and Tailwind CSS, AI-powered storytelling with LovArts imagery and Lottie animation, and Sanity CMS integration with full performance, accessibility, and SEO optimization.",
+    tools: ["Next.js", "TypeScript", "OpenAI", "Vercel", "Tailwind CSS", "Sanity"],
+    results: "A refined reading experience that encourages deeper engagement, streamlined publishing through a flexible headless CMS, enhanced storytelling with AI-generated imagery and interactive animations, optimized performance, accessibility and SEO on every device, and a scalable platform ready for future content and experiences.",
+  },
+  "jobfit-ai": {
+    tagline: "A recruitment platform that matches talent to roles at scale using LLM-based signals.",
+    overview: "We developed JobFit AI, an intelligent recruitment platform that streamlines hiring by matching candidates to opportunities using AI-powered resume analysis, skills evaluation, and contextual fit scoring. The complete backend architecture was built on BuildShip — connecting resume ingestion, AI processing, structured candidate profiles, and recruiter dashboards into one seamless hiring experience.",
+    challenge: "Traditional recruitment depends on manual reviews and keyword filtering, so strong candidates get overlooked when their experience is phrased differently from the job description, while recruiters burn hours on high application volumes.",
+    solution: "The workflow follows Apply, Analyze, Match, Shortlist: automated resume ingestion and profile generation, GPT-powered parsing orchestrated by BuildShip, multidimensional fit scores based on skills, experience, qualifications and contextual relevance — plus recruiter dashboards with rankings, skill-gap analysis, and AI-generated recommendations over structured REST APIs.",
+    tools: ["Next.js", "Node.js", "PostgreSQL", "OpenAI", "LangChain", "shadcn/ui"],
+    results: "Reduced resume screening time through automated AI processing, improved matching accuracy via contextual analysis instead of keyword filtering, faster recruiter decisions with transparent fit scores, streamlined deployment with BuildShip automation, and a scalable architecture for high-volume hiring.",
+  },
+  batchq: {
+    tagline: "Real-time AI data pipelines that let engineering teams orchestrate, monitor, and scale jobs.",
+    overview: "We designed and developed a scalable backend automation pipeline for BatchQ that transforms large-scale competitor research into a fully automated, AI-powered workflow — continuously processing thousands of competitor URLs by retrieving data from Google Sheets, performing real-time web research through AI, and enriching each record with structured insights.",
+    challenge: "Data teams must monitor competitors at scale while managing thousands of URLs, unreliable APIs, and rate-limited services. Manual research is slow and error-prone, and off-the-shelf automation breaks under volume or returns stale, generic answers from static model knowledge.",
+    solution: "A structured progression of Import, Research, Enrich, Deliver: automated Google Sheets ingestion, a custom JavaScript/TypeScript node integrating the Perplexity API (Llama 3 Sonar Large) for live web research, controlled batch processing with intelligent throttling, and automatic write-back of cleaned, normalized insights — no manual intervention.",
+    tools: ["React", "TypeScript", "Python", "Kafka", "ClickHouse", "Kubernetes"],
+    results: "Fully automated competitor research with minimal human intervention, real-time intelligence powered by live AI research, reliable processing of thousands of records, stable performance under rate limits, a major reduction in operational workload, and a scalable backend ready for future automation.",
+  },
+  prismpay: {
+    tagline: "A next-generation payment interface designed for clarity, trust, and speed.",
+    overview: "We designed PrismPay, a modern fintech payment platform concept focused on making digital transactions simple, transparent, and effortless — combining intuitive UX, thoughtful information architecture, and a clean visual language that helps users complete transactions with confidence.",
+    challenge: "Digital payments are essential, yet many financial products feel intimidating and cluttered. Users need to move money quickly, understand the status of every transaction at a glance, and trust that their information is safe — without wading through complex interfaces.",
+    solution: "A user journey of Send, Confirm, Track, Complete: research-driven UX strategy, a clear information hierarchy for payments, history, balances and status, a reusable design system with card-based transaction patterns, clear visual feedback, and interactive prototyping validated across desktop, tablet, and mobile.",
+    tools: ["Figma", "Framer", "React", "Stripe", "shadcn/ui"],
+    results: "A modern visual identity that reinforces credibility, simplified payment workflows with reduced friction, improved transaction visibility through clear status updates, a consistent cross-device experience, and a scalable design foundation for future payment features.",
+  },
+  clay: {
+    tagline: "A refined real estate website with a design system built to scale.",
+    overview: "A modern real estate website concept built to simplify property discovery through structured user experiences, scalable design systems, and performance-focused development — enabling users to browse listings effortlessly while giving agencies a flexible foundation for growth.",
+    challenge: "Real estate sites manage huge volumes of dynamic content, making clarity hard without overwhelming users. The platform had to simplify browsing across extensive inventories, present listings consistently, improve discoverability, deliver exceptional performance, and scale with constantly changing listings.",
+    solution: "A journey of Search, Filter, Explore Listings, View Details, Make an Inquiry: scalable page templates for listing grids and property pages, a modular component system, clean grid-based UI with strong hierarchy, CMS integration for dynamic listings, and SEO-friendly page architecture on a modern frontend stack.",
+    tools: ["Next.js", "Tailwind CSS", "Sanity", "Vercel"],
+    results: "A structured browsing experience that simplifies property discovery, clear information architecture across large inventories, responsive performance on every device, SEO-friendly organization, and a modular design system supporting future expansion.",
+  },
+  velto: {
+    tagline: "A premium landing page built to convert luxury fashion shoppers.",
+    overview: "A modern fashion e-commerce landing concept blending editorial aesthetics with conversion-focused UX — a premium digital storefront where products become the hero, inspired by luxury fashion brands and editorial publications, with refined typography and thoughtful visual hierarchy.",
+    challenge: "Fashion e-commerce competes for attention with crowded layouts, excessive promotions, and inconsistent hierarchy, making it difficult for products to stand out. The experience had to communicate premium identity instantly and guide visitors naturally toward purchase.",
+    solution: "A flow of Discover, Explore Collections, View Featured Products, Build Purchase Intent: editorial-inspired layouts, minimal distraction-free product presentation, a neutral palette with restrained accents, strategically placed calls-to-action, and a reusable component system ready to evolve into a complete online store.",
+    tools: ["Framer", "Figma", "Motion"],
+    results: "A refined visual identity that communicates luxury instantly, enhanced product visibility through clean layouts, an intuitive browsing experience, responsive performance, stronger conversion potential through strategic content flow, and a scalable foundation for e-commerce expansion.",
+  },
+  archon: {
+    tagline: "A category-defining B2B site with a modern engineering foundation.",
+    overview: "A modern website concept for an architecture and interior design studio seeking a refined digital presence — a visually immersive experience where architectural projects take center stage, communicating professionalism, craftsmanship, and attention to detail.",
+    challenge: "Architecture websites often struggle to present rich portfolios without overwhelming visitors. Dense galleries, inconsistent layouts, and weak hierarchy make it hard for potential clients to appreciate the firm's expertise or take the next step.",
+    solution: "A journey of Discover, Explore Projects, Learn About the Studio, Build Trust, Start a Conversation: large-format project imagery, minimalist grid-based layouts with generous whitespace, sophisticated typography, a neutral palette complementing photography, and a component-based design system for long-term scalability.",
+    tools: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    results: "A premium online presence aligned with the studio's architectural identity, improved project discoverability, stronger visual storytelling, a responsive experience on every device, strategic CTA placement supporting lead generation, and a scalable foundation for portfolio growth.",
+  },
+  goplay: {
+    tagline: "A mobile-first outdoor sports booking product designed for daily use.",
+    overview: "We designed GoPlay, a mobile application that makes discovering, booking, and participating in sports activities simple and accessible — connecting users with nearby venues, events, and communities while providing a seamless experience for organizing games and staying active.",
+    challenge: "Finding local sports activities involves fragmented communication, inconsistent booking systems, and limited chances to connect with players of similar interests or skill levels — users juggle multiple platforms just to organize a single game.",
+    solution: "A progression of Discover, Connect, Book, Play: streamlined venue discovery and reservation workflows, community engagement features, personalized recommendations from user behavior, card-based mobile UI for Android and iOS, and a scalable cloud architecture with ML-driven recommendations and Redis caching.",
+    tools: ["React Native", "Expo", "Node.js", "PostgreSQL"],
+    results: "A streamlined booking experience with reduced friction, personalized recommendations that increase engagement, intuitive navigation with consistent interaction patterns, scalable cloud infrastructure for growing communities, and a flexible foundation for new sports and social features.",
+  },
+  noireve: {
+    tagline: "A brand experience for a French luxury beauty and skincare house.",
+    overview: "We conceptualized and designed NOIRÈVE, a luxury French skincare brand exploring editorial-inspired web design, premium storytelling, and immersive digital experiences — guided by the visual language of European fashion houses, focusing on atmosphere, craftsmanship, and storytelling before products.",
+    challenge: "Luxury beauty competes on perception as much as product quality. The experience had to communicate exclusivity and craftsmanship, showcase products through editorial presentation, and balance cinematic visuals with intuitive navigation.",
+    solution: "A curated progression of Discover, Experience, Explore, Indulge: a continuous editorial journey through brand philosophy, rituals, collections, and ingredients; asymmetrical magazine-inspired layouts; dark neutrals with taupe, pearl, and gold accents; serif display typography; cinematic transitions; and AI-assisted visual production for a cohesive premium aesthetic.",
+    tools: ["Framer", "Figma", "Motion"],
+    results: "A refined visual identity strengthening premium perception, a storytelling-first experience driving emotional engagement, a consistent language across collections, enhanced creative efficiency through AI-assisted production, and a scalable foundation for future launches and campaigns.",
+  },
+};
+
 export const PROCESS = {
   eyebrow: "Process",
   title: "A structured pipeline, not a pitch deck.",
@@ -340,6 +415,52 @@ export const STUDIO = {
   ],
   img: "/team/studio.jpg",
 };
+
+export const DECISION_AID = {
+  popup: {
+    title: "Before you commit to another build sprint…",
+    sub: "Get a senior view of the constraint, the evidence you have, and the next decision that removes the most risk.",
+    primary: "Choose your starting point",
+    secondary: "Book a technical review",
+    note: "No email required for this decision aid. Dismiss once and this popup stays closed for the session.",
+  },
+  eyebrow: "Free decision aid",
+  title: "The decision checks",
+  sub: "Four signals behind a sound next decision",
+  checks: [
+    { t: "A clear outcome", d: "Make this visible before choosing the delivery path." },
+    { t: "Known critical path", d: "Make this visible before choosing the delivery path." },
+    { t: "Evidence you can inspect", d: "Make this visible before choosing the delivery path." },
+    { t: "An ownership and handoff plan", d: "Make this visible before choosing the delivery path." },
+  ],
+  note: "The right next step may be a focused review, not the largest engagement.",
+  quizTitle: "Where to start",
+  quizSub: "Which situation sounds most like today?",
+  situations: [
+    {
+      q: "We need a landing page, MVP feature, or AI prototype — fast.",
+      rec: "Sprint",
+      detail: "A 2–4 week focused build. Fixed scope, fast turnaround.",
+    },
+    {
+      q: "We're building a full product — design system, app build, launch.",
+      rec: "Partnership",
+      detail: "1–3 months of principal-led engagement. Weekly demos, shared Linear.",
+    },
+    {
+      q: "We have a live product that needs iteration, growth, and scaling.",
+      rec: "Retainer",
+      detail: "Ongoing embedded team. Dedicated capacity, senior only.",
+    },
+    {
+      q: "We're not sure what the real constraint is yet.",
+      rec: "Technical review",
+      detail: "A 30-minute senior review — get the evidence before committing to a path.",
+    },
+  ],
+};
+
+export const projectSlug = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 export const CTA = {
   title: "Let's build something exceptional.",

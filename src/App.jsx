@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Home, Services, WorkPage, TeamPage, ContactPage } from "./pages";
 import { GroupIndexPage, DetailPage } from "./components/Detail";
+import ProjectDetail from "./components/Project";
+import { AidPopup } from "./components/DecisionAid";
 import { EASE } from "./components/ui";
 
 function ScrollToTop() {
@@ -40,6 +42,7 @@ function AnimatedRoutes() {
           <Route path="/resources/:slug" element={<DetailPage groupPath="resources" />} />
           <Route path="/blog/:slug" element={<DetailPage groupPath="blog" />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/work/:slug" element={<ProjectDetail />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Home />} />
@@ -70,6 +73,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <AidPopup />
       <Navbar theme={theme} onToggleTheme={() => setTheme(theme === "dark" ? "light" : "dark")} />
       <main>
         <AnimatedRoutes />

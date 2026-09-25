@@ -52,13 +52,6 @@ export function GroupIndexPage({ groupPath }) {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={0.1}>
-            <div className="work-foot">
-              <a className="btn" href={group.all} target="_blank" rel="noreferrer">
-                View original on devowise.com <span className="arr"><Icon name="arrow" size={16} /></span>
-              </a>
-            </div>
-          </Reveal>
         </div>
       </section>
       <Cta num={null} />
@@ -93,9 +86,6 @@ export function DetailPage({ groupPath }) {
               <div className="hero-ctas">
                 <a className="btn btn-solid" href={LINKS.calendly} target="_blank" rel="noreferrer">
                   Book a Call <span className="arr"><Icon name="arrow" size={16} /></span>
-                </a>
-                <a className="btn" href={url} target="_blank" rel="noreferrer">
-                  View live original page
                 </a>
               </div>
             </div>
