@@ -7,6 +7,8 @@ dark/light toggler, and Framer Motion animations throughout.
 All original Devowise copy is preserved verbatim (hero, stats, capabilities, tech stack,
 certifications, selected work, process, engagements, about, FAQ, full directory, CTA).
 
+### Live link: https://devowise-website-ready.vercel.app
+
 ## Run in VS Code (your own computer)
 
 1. **Install prerequisites (one time)**
