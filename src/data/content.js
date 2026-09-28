@@ -1,6 +1,6 @@
 export const LINKS = {
   calendly: "https://calendly.com/nabeelfarooq1515/30min",
-  email: "contact@devowise.com",
+  email: "contactdevowise@gmail.com",
   site: "https://www.devowise.com",
   contra: "https://contra.com/devowise",
 };
@@ -297,6 +297,29 @@ export const FAQ = {
   ],
 };
 
+export const SERVICES = [
+  { icon: "pulse", slug: "mvp-doctor", title: "MVP Doctor", desc: "Free AI-powered readiness report for your startup." },
+  { icon: "shield", slug: "ai-prototype-hardening", title: "AI Prototype Hardening", desc: "Turn AI-generated MVPs into production-grade software. Scope and timeline are confirmed after a technical review." },
+  { icon: "saas", slug: "saas-development", title: "SaaS Development", desc: "Scalable SaaS platforms built for institutional-grade traffic and security." },
+  { icon: "code", slug: "next-js-platform-engineering", title: "Next.js Platform Engineering", desc: "High-concurrency web platforms and robust API orchestration." },
+  { icon: "mobile", slug: "mobile-app-development", title: "Mobile App Development", desc: "Secure iOS/Android apps with production-grade AI features." },
+  { icon: "web", slug: "web-full-stack", title: "Web & Full-Stack", desc: "End-to-end web platforms, dashboards, Shopify commerce, and API-first architectures." },
+  { icon: "design", slug: "branding-ui-ux-web-development", title: "Branding, UI/UX & Web Development", desc: "Branding and logo design, UI/UX, website design and development, landing pages, and Framer / Webflow / Kajabi builds — one team from identity to launch." },
+  { icon: "strategy", slug: "seo-conversion-optimisation", title: "SEO & Conversion Optimisation", desc: "Search visibility and conversion rate optimisation, measured — not guessed." },
+  { icon: "auto", slug: "website-redesign-maintenance", title: "Website Redesign & Maintenance", desc: "Redesigns, refreshes, and ongoing maintenance that keep your site fast, secure, and current." },
+  { icon: "cloud", slug: "elastic-infrastructure", title: "Elastic Infrastructure", desc: "Cost-optimized AWS/GCP ecosystems. Unit economics, not guesswork." },
+  { icon: "chip", slug: "forward-deployed-ai-engineer", title: "Forward Deployed AI Engineer", desc: "Embed senior AI engineering into your production team, codebase, and delivery workflows." },
+];
+
+export const SITUATIONS = [
+  { route: "Fix it", num: "01", quote: "“The MVP works, but I do not trust it.”", desc: "Get a free AI-powered readiness report before real users, scale, or diligence finds the gap.", start: "MVP Doctor", to: "/services/mvp-doctor", timing: "Start now" },
+  { route: "Fix it", num: "02", quote: "“We built it with AI tools — now it needs to be production-grade.”", desc: "Scope and timeline are confirmed after a technical review, then we harden it for real traffic.", start: "AI Prototype Hardening", to: "/services/ai-prototype-hardening", timing: "Review first" },
+  { route: "Build it right", num: "03", quote: "“We are starting a new product.”", desc: "Scoping, architecture and design decisions made while they are still inexpensive to change.", start: "SaaS Development", to: "/services/saas-development", timing: "Before implementation" },
+  { route: "Build it right", num: "04", quote: "“Traffic is growing and the platform is creaking.”", desc: "High-concurrency web platforms and robust API orchestration that hold up past the demo.", start: "Next.js Platform Engineering", to: "/services/next-js-platform-engineering", timing: "Before scale" },
+  { route: "Keep shipping", num: "05", quote: "“Senior review is the delivery bottleneck.”", desc: "Embed senior AI engineering into your production team, codebase, and delivery workflows.", start: "Forward Deployed AI Engineer", to: "/services/forward-deployed-ai-engineer", timing: "Ongoing continuity" },
+  { route: "Keep shipping", num: "06", quote: "“Cloud costs are eating the margin.”", desc: "Cost-optimized AWS/GCP ecosystems. Unit economics, not guesswork.", start: "Elastic Infrastructure", to: "/services/elastic-infrastructure", timing: "Monthly engagement" },
+];
+
 const d = (slug) => `https://www.devowise.com/${slug}`;
 
 export const DIRECTORY = {
@@ -306,23 +329,7 @@ export const DIRECTORY = {
   groups: [
     {
       name: "Services", all: d("services"),
-      items: [
-        ["Branding Services", d("services/branding-services")],
-        ["Brand Identity Design", d("services/brand-identity-design")],
-        ["Logo Design", d("services/logo-design")],
-        ["UI/UX Design", d("services/ui-ux-design")],
-        ["Website Design", d("services/website-design")],
-        ["Website Development", d("services/website-development")],
-        ["Framer Development", d("services/framer-development")],
-        ["Webflow Development", d("services/webflow-development")],
-        ["Shopify Development", d("services/shopify-development")],
-        ["Kajabi Development", d("services/kajabi-development")],
-        ["Landing Page Design", d("services/landing-page-design")],
-        ["Website Redesign", d("services/website-redesign")],
-        ["Website Maintenance", d("services/website-maintenance")],
-        ["SEO Services", d("services/seo-services")],
-        ["Conversion Rate Optimisation", d("services/conversion-rate-optimisation")],
-      ],
+      items: SERVICES.map((s) => [s.title, d(`services/${s.slug}`)]),
     },
     {
       name: "Platforms", all: d("platforms"),

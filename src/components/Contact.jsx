@@ -51,10 +51,6 @@ export default function ContactSection() {
                 <span className="k">Portfolio</span>
                 <a className="v" href={LINKS.contra} target="_blank" rel="noreferrer">contra.com/devowise</a>
               </div>
-              <div className="contact-card">
-                <span className="k">Website</span>
-                <a className="v" href={LINKS.site} target="_blank" rel="noreferrer">www.devowise.com</a>
-              </div>
             </div>
           </Reveal>
         </div>

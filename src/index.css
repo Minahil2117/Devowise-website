@@ -739,3 +739,105 @@ footer { border-top: 1px solid var(--border); padding: 70px 0 0; background: var
 @media (max-width: 560px) {
   .nav-actions .btn { display: none; }
 }
+
+/* ── Zenveus-style decision map, situations & services grid ───────── */
+.route-tag {
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--accent-text); font-weight: 800;
+}
+.dmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.dmap-card, .situ-card {
+  text-align: left; width: 100%; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px; cursor: pointer; display: flex;
+  flex-direction: column; gap: 10px; color: var(--text); font-family: inherit;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.dmap-card .idx, .situ-card .idx {
+  font-family: var(--font-display); font-size: 12px; color: var(--accent-text); letter-spacing: 0.2em;
+}
+.dmap-card h3 { font-size: 18px; font-weight: 800; }
+.dmap-card p, .situ-card p { color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+.dmap-card:hover, .situ-card:hover, .dmap-card.on, .situ-card.on {
+  border-color: var(--grad); transform: translateY(-3px);
+}
+.dmap-card.on, .situ-card.on { box-shadow: 0 12px 36px -18px rgba(124, 58, 237, 0.55); }
+.dmap-panel, .rec-panel {
+  margin-top: 22px; border: 1px solid var(--border); border-left: 3px solid var(--grad);
+  border-radius: var(--radius); background: var(--surface); padding: 26px 28px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+}
+.dmap-panel h3, .rec-panel h3 { font-size: clamp(17px, 2vw, 21px); font-weight: 800; line-height: 1.4; }
+.rec-panel p { color: var(--muted); font-size: 14.5px; }
+
+.situ-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.situ-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.situ-card h3 { font-size: 16px; font-weight: 800; line-height: 1.45; }
+.situ-card p { flex: 1; }
+.situ-meta { font-size: 13px; color: var(--muted); }
+.situ-meta strong { color: var(--text); }
+.situ-meta-row { display: flex; gap: 26px; flex-wrap: wrap; }
+.situ-use {
+  margin-top: 4px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent-text);
+}
+.situ-note { margin-top: 18px; color: var(--muted); font-size: 14px; }
+.situ-note strong { color: var(--text); }
+
+.srv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px; }
+.srv-row {
+  display: flex; gap: 16px; align-items: flex-start; padding: 20px 16px;
+  border: 1px solid transparent; border-radius: var(--radius); color: inherit;
+  transition: border-color 0.25s, background 0.25s;
+}
+.srv-row:hover { border-color: var(--border); background: var(--surface); }
+.srv-ico {
+  flex: none; width: 46px; height: 46px; border: 1px solid var(--border); border-radius: 12px;
+  display: grid; place-items: center; color: var(--accent-text); background: var(--surface-2);
+}
+.srv-txt h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+.srv-txt p { color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+.srv-row .go { margin-left: auto; color: var(--accent-text); opacity: 0; transition: opacity 0.25s; align-self: center; }
+.srv-row:hover .go { opacity: 1; }
+
+@media (max-width: 1080px) {
+  .dmap-grid, .situ-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 940px) {
+  .srv-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .dmap-grid, .situ-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Situation picker: list + sticky live panel ───────── */
+.situ-wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px; align-items: start; }
+.situ-list { display: flex; flex-direction: column; gap: 10px; }
+.situ-row {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px;
+  width: 100%; text-align: left; padding: 16px 18px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  color: var(--text); font-family: inherit;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.situ-row:hover { border-color: var(--grad); transform: translateX(4px); }
+.situ-row.on {
+  border-color: var(--grad); background: var(--surface-2);
+  box-shadow: inset 3px 0 0 var(--grad);
+}
+.situ-route {
+  font-family: var(--font-display); font-size: 10.5px; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-text);
+  border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+}
+.situ-quote { font-weight: 700; font-size: 14.5px; line-height: 1.4; }
+.situ-idx { font-family: var(--font-display); font-size: 12px; color: var(--muted); }
+.situ-side { position: sticky; top: calc(var(--nav-h) + 20px); display: flex; flex-direction: column; gap: 14px; }
+.situ-side .rec-panel { margin-top: 0; }
+@media (max-width: 940px) {
+  .situ-wrap { grid-template-columns: 1fr; }
+  .situ-side { position: static; }
+}
+@media (max-width: 560px) {
+  .situ-row { grid-template-columns: 1fr auto; }
+  .situ-route { display: none; }
+}

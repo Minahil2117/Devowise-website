@@ -5,6 +5,7 @@ import { Directory, Cta } from "./components/Footer";
 import StudioAbout from "./components/Team";
 import ContactSection from "./components/Contact";
 import { AidSection } from "./components/DecisionAid";
+import { Situations, ServicesGrid } from "./components/RoutePicker";
 import { PageHero, Reveal, Icon, SectionHead } from "./components/ui";
 import { DIRECTORY, GROUP_PATH, slugOf } from "./data/content";
 import { Link } from "react-router-dom";
@@ -40,11 +41,12 @@ export function Home() {
   return (
     <>
       <Hero />
-      <Capabilities num="01" />
-      <Stack num="02" />
-      <Work num="03" limit={4} preview={false} />
-      <Process num="04" />
-      <ResourcesTeaser num="05" />
+      <Situations num="01" />
+      <ServicesGrid num="02" />
+      <Stack num="03" />
+      <Work num="04" limit={4} preview={false} />
+      <Process num="05" />
+      <ResourcesTeaser num="06" />
       <AidSection />
       <Cta num={null} />
     </>
