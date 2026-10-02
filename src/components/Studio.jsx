@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROCESS, ENGAGEMENTS, ABOUT, FAQ } from "../data/content";
+import { LOGO_SRC } from "../logoData";
 import { EASE, Icon, Reveal, SectionHead } from "./ui";
 
 export function Process({ num = "03" }) {
@@ -65,7 +66,7 @@ export function About({ num = "01" }) {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: EASE }}
             >
-              <img className="logo-ink" src="/logo.png" alt="Devowise mark" />
+              <img className="logo-ink" src={LOGO_SRC} alt="Devowise mark" />
             </motion.div>
           </div>
         </Reveal>

@@ -53,13 +53,7 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState(() => {
-    try {
-      return localStorage.getItem("dw-theme") || "dark";
-    } catch {
-      return "dark";
-    }
-  });
+  const [theme] = useState("light");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -74,7 +68,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <AidPopup />
-      <Navbar theme={theme} onToggleTheme={() => setTheme(theme === "dark" ? "light" : "dark")} />
+      <Navbar />
       <main>
         <AnimatedRoutes />
       </main>

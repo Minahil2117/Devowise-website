@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { DIRECTORY, GROUP_PATH, slugOf } from "../data/content";
+import { DIRECTORY, GROUP_PATH, slugOf, LINKS } from "../data/content";
+import { LOGO_SRC } from "../logoData";
+import logoImg from "../assets/logo.png";
 import { Icon, EASE } from "./ui";
 
 const NAV_GROUPS = DIRECTORY.groups.slice(0, 5).map((g) => ({
@@ -40,8 +42,13 @@ export default function Navbar({ theme, onToggleTheme }) {
       <header className={`nav ${scrolled || active ? "scrolled" : ""} ${mobileOpen ? "open" : ""}`}>
         <div className="nav-inner">
           <Link className="brand" to="/" aria-label="Devowise home">
-            <img src="/logo.png" alt="Devowise logo" />
-            <span className="wordmark">DEVO<b>WISE</b></span>
+            <img
+              src={logoImg || LOGO_SRC}
+              alt="Devowise logo"
+              onError={(e) => {
+                e.currentTarget.src = LOGO_SRC;
+              }}
+            />
           </Link>
 
           <nav className="nav-links" aria-label="Primary">
@@ -83,20 +90,13 @@ export default function Navbar({ theme, onToggleTheme }) {
                 </AnimatePresence>
               </div>
             ))}
+            <Link className="nav-link nav-route" to="/work">Work</Link>
+            <Link className="nav-link nav-route" to="/team">Team</Link>
+            <Link className="nav-link nav-route" to="/contact">Contact</Link>
           </nav>
 
           <div className="nav-actions">
-            <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle dark / light mode" title="Toggle theme">
-              <motion.span
-                key={theme}
-                initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
-                animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.35, ease: EASE }}
-                style={{ display: "grid", placeItems: "center" }}
-              >
-                <Icon name={theme === "dark" ? "sun" : "moon"} size={19} />
-              </motion.span>
-            </button>
+            <a className="btn btn-solid nav-cta" href={LINKS.calendly} target="_blank" rel="noreferrer">Book a Call</a>
             <button className="hamburger" aria-label="Open menu" onClick={() => setMobileOpen(true)}>
               <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none">
                 <path d="M4 7h16M4 12h16M4 17h16" />
@@ -151,6 +151,14 @@ export default function Navbar({ theme, onToggleTheme }) {
                 </AnimatePresence>
               </div>
             ))}
+            <div className="m-group m-routes">
+              <Link to="/work" onClick={() => setMobileOpen(false)}>Work</Link>
+              <Link to="/team" onClick={() => setMobileOpen(false)}>Team</Link>
+              <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
+            </div>
+            <a className="btn btn-solid" href={LINKS.calendly} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}>
+              Book a Call
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

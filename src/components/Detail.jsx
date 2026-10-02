@@ -25,7 +25,14 @@ function excerptsFor(path, label) {
   }
   if (has("seo", "conversion", "optimisation")) { out.push(cap(5).desc); }
   if (has("ai")) { out.push(cap(0).desc); }
-  if (has("startup", "mvp")) { out.push(cap(5).desc); }
+  if (has("startup", "mvp", "doctor")) { out.push(cap(5).desc); }
+  if (has("hardening", "prototype")) { out.push(cap(0).desc); }
+  if (has("mobile")) { out.push(cap(1).desc); }
+  if (has("platform", "next")) { out.push(cap(1).desc); }
+  if (has("saas")) { out.push(cap(1).desc); }
+  if (has("full-stack", "full stack", "web &")) { out.push(cap(1).desc); }
+  if (has("infrastructure", "elastic")) { out.push(cap(3).desc); }
+  if (has("forward", "deployed", "engineer")) { out.push(cap(0).desc); }
 
   const clean = out.filter(Boolean);
   if (!clean.length) { out.push(ABOUT.p1, ABOUT.p2); }
@@ -45,7 +52,6 @@ export function GroupIndexPage({ groupPath }) {
             {group.items.map(([label, url], i) => (
               <Reveal key={label} delay={(i % 3) * 0.06}>
                 <Link className="index-card" to={`/${groupPath}/${slugOf(url)}`}>
-                  <span className="idx">/{String(i + 1).padStart(2, "0")}</span>
                   <h3>{label}</h3>
                   <span className="go"><Icon name="arrow" size={18} /></span>
                 </Link>

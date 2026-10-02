@@ -21,7 +21,6 @@ export function SectionHead({ num, eyebrow, title, sub }) {
   return (
     <Reveal>
       <div className="s-head">
-        {num && <span className="s-index">( {num} )</span>}
         <span className="eyebrow">{eyebrow}</span>
       </div>
       <div className="s-title-row">
@@ -66,7 +65,6 @@ export function PageHero({ num, eyebrow, title, sub }) {
       <div className="container">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}>
           <div className="s-head">
-            {num && <span className="s-index">( {num} )</span>}
             <span className="eyebrow">{eyebrow}</span>
           </div>
           <div className="s-title-row">

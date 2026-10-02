@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { DIRECTORY, CTA, LINKS, GROUP_PATH, slugOf } from "../data/content";
+import { LOGO_SRC } from "../logoData";
 import { EASE, Icon, Reveal, SectionHead } from "./ui";
 
 const PAGES = [
@@ -90,7 +91,7 @@ export function Footer() {
       <div className="container">
         <div className="foot-grid">
           <div className="foot-brand">
-            <img src="/logo.png" alt="Devowise logo" />
+            <img src={LOGO_SRC} alt="Devowise logo" />
             <div className="tag-line">We Build what others imagine</div>
             <div className="motto">Because Your Success Is Our Story</div>
           </div>

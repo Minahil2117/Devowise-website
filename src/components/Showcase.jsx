@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
-import { CAPABILITIES, CERTS, WORK, LINKS, projectSlug } from "../data/content";
+import { CAPABILITIES, CERTS, WORK, LINKS, projectSlug, CLIENTS, logoDev } from "../data/content";
 import { EASE, Icon, Reveal, SectionHead } from "./ui";
 
 export function Capabilities({ num = "01" }) {
@@ -21,7 +21,6 @@ export function Capabilities({ num = "01" }) {
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                   <div className="cap-icon"><Icon name={c.icon} /></div>
-                  <span className="idx">/ {String(i + 1).padStart(2, "0")}</span>
                 </div>
                 <h3>{c.title}</h3>
                 <p>{c.desc}</p>
@@ -94,7 +93,6 @@ export function Work({ limit = 0, preview = true, num = "02" }) {
                 to={`/work/${projectSlug(p.name)}`}
                 onMouseEnter={() => preview && setHovered(p)}
               >
-                <span className="w-idx">/ {String(i + 1).padStart(2, "0")}</span>
                 <span className="w-name">
                   {p.name}
                   <span className="w-tags">
@@ -133,6 +131,39 @@ export function Work({ limit = 0, preview = true, num = "02" }) {
             )}
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+export function Clients({ num = "03" }) {
+  return (
+    <section id="clients">
+      <div className="container">
+        <SectionHead
+          num={num}
+          eyebrow="Trusted by"
+          title="Teams we've shipped with."
+          sub="From regional household names to global product brands."
+        />
+        <div className="logo-wall">
+          {CLIENTS.map(([name, dom], i) => (
+            <Reveal key={name} delay={(i % 4) * 0.05}>
+              <div className="logo-cell">
+                <img
+                  src={logoDev(dom)}
+                  alt={name}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.nextSibling.style.display = "flex";
+                  }}
+                />
+                <span className="logo-fallback">{name}</span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

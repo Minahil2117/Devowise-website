@@ -25,7 +25,6 @@ function ResourcesTeaser({ num = "05" }) {
           {res.items.map(([label, url], i) => (
             <Reveal key={label} delay={(i % 3) * 0.06}>
               <Link className="index-card" to={`/${GROUP_PATH[res.name]}/${slugOf(url)}`}>
-                <span className="idx">/{String(i + 1).padStart(2, "0")}</span>
                 <h3>{label}</h3>
                 <span className="go"><Icon name="arrow" size={18} /></span>
               </Link>

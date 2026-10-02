@@ -1,16 +1,8 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { HERO, LINKS, STACK } from "../data/content";
+import { HERO, STACK } from "../data/content";
 import { Counter, EASE, Icon, Reveal, SectionHead, TechChip } from "./ui";
 
 const EMPHASIS = new Set(["AI-powered", "digital", "products"]);
-
-const PILLS = [
-  ["Services", "/services"],
-  ["Work", "/work"],
-  ["Team", "/team"],
-  ["Contact", "/contact"],
-];
 
 const CODE_LINES = [
   { type: "cmd", text: "$ devowise verify --production" },
@@ -68,24 +60,6 @@ export function Hero() {
             >
               {HERO.sub}
             </motion.p>
-
-            <motion.div
-              className="route-pills"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.95, ease: EASE }}
-            >
-              {PILLS.map(([label, to]) => (
-                <motion.span key={to} whileHover={{ y: -3, scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-                  <Link className="pill" to={to}>{label}</Link>
-                </motion.span>
-              ))}
-              <motion.span whileHover={{ y: -3, scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-                <a className="pill solid" href={LINKS.calendly} target="_blank" rel="noreferrer">
-                  Book a Call
-                </a>
-              </motion.span>
-            </motion.div>
           </div>
 
           <motion.div

@@ -1,6 +1,6 @@
 export const LINKS = {
   calendly: "https://calendly.com/nabeelfarooq1515/30min",
-  email: "contactdevowise@gmail.com",
+  email: "contact@devowise.com",
   site: "https://www.devowise.com",
   contra: "https://contra.com/devowise",
 };
@@ -296,6 +296,20 @@ export const FAQ = {
     },
   ],
 };
+
+export const CLIENTS = [
+  ["Al Ghurair", "alghurair.com"],
+  ["Al Jouf", "aljouf.com"],
+  ["Weatherbys", "weatherbys.com"],
+  ["Bestseller", "bestseller.com"],
+  ["fäm Master Agency", "fam.ae"],
+  ["Interwood", "interwood.pk"],
+  ["Nestlé", "nestle.com"],
+  ["Under Armour", "underarmour.com"],
+];
+
+export const logoDev = (domain) =>
+  `https://img.logo.dev/${domain}?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&format=png&size=64&retina=true`;
 
 export const SERVICES = [
   { icon: "pulse", slug: "mvp-doctor", title: "MVP Doctor", desc: "Free AI-powered readiness report for your startup." },

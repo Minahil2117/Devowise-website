@@ -5,12 +5,27 @@ import { EASE, Icon, Reveal } from "./ui";
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const mailto = () => {
+    const subject = encodeURIComponent(`Project inquiry from ${form.name || "your website"}`);
+    const body = encodeURIComponent(`${form.message}\n\n— ${form.name}\n${form.email}`);
+    return `mailto:${LINKS.email}?subject=${subject}&body=${body}`;
+  };
 
   const submit = (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Project inquiry from ${form.name || "your website"}`);
-    const body = encodeURIComponent(`${form.message}\n\n— ${form.name}\n${form.email}`);
-    window.location.href = `mailto:${LINKS.email}?subject=${subject}&body=${body}`;
+    window.location.href = mailto();
+    setSent(true);
+  };
+
+  const copyMsg = async () => {
+    try {
+      await navigator.clipboard.writeText(`${form.message}\n\n— ${form.name}\n${form.email}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch { /* clipboard unavailable */ }
   };
 
   return (
@@ -34,6 +49,18 @@ export default function ContactSection() {
               <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="btn btn-solid" type="submit">
                 Send Message <span className="arr"><Icon name="arrow" size={16} /></span>
               </motion.button>
+              {sent && (
+                <div className="sent-note">
+                  <p>
+                    <strong>Almost there.</strong> Your email app should have opened with everything pre-filled.
+                    If it didn't, send it directly to <a href={`mailto:${LINKS.email}`}>{LINKS.email}</a> or copy your message below.
+                  </p>
+                  <div className="hero-ctas">
+                    <a className="btn" href={mailto()}>Open email app</a>
+                    <button className="btn" type="button" onClick={copyMsg}>{copied ? "Copied ✓" : "Copy message"}</button>
+                  </div>
+                </div>
+              )}
             </form>
           </Reveal>
 
@@ -46,10 +73,6 @@ export default function ContactSection() {
               <div className="contact-card">
                 <span className="k">Book a Call</span>
                 <a className="v" href={LINKS.calendly} target="_blank" rel="noreferrer">calendly.com/devowise — 30 min</a>
-              </div>
-              <div className="contact-card">
-                <span className="k">Portfolio</span>
-                <a className="v" href={LINKS.contra} target="_blank" rel="noreferrer">contra.com/devowise</a>
               </div>
             </div>
           </Reveal>
