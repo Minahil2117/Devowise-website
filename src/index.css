@@ -888,3 +888,921 @@ footer { border-top: 1px solid var(--border); padding: 70px 0 0; background: var
   color: var(--muted); text-transform: uppercase; font-size: 13px;
 }
 @media (max-width: 940px) { .logo-wall { grid-template-columns: repeat(2, 1fr); } }
+
+/* ==========================================================================
+   BLUTECH CONSULTING SERVICES ARCHITECTURE & INTERACTIVE MEGA-MENU
+   ========================================================================== */
+
+/* ── Chevron rotation & Trigger state ───────── */
+.nav-link .chev.rotated {
+  transform: rotate(180deg);
+}
+
+/* ── Blutech Mega-Panel Dropdown ───────── */
+.blu-mega-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1080px, 94vw);
+  max-height: min(84vh, 720px);
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--bg-2) 96%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 30px 70px -20px rgba(124, 58, 237, 0.28), 0 0 0 1px rgba(124, 58, 237, 0.1);
+  padding: 28px 30px 22px;
+  z-index: 150;
+  text-align: left;
+}
+
+.blu-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.blu-mega-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.blu-col-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.blu-col-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--a-purple) 15%, var(--surface));
+  color: var(--accent-text);
+  display: grid;
+  place-items: center;
+}
+
+.blu-col-title {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.blu-col-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  min-height: 36px;
+}
+
+.blu-col-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.blu-service-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blu-service-link:hover,
+.blu-service-link.active {
+  background: var(--surface-2);
+  border-color: color-mix(in srgb, var(--a-purple) 25%, transparent);
+  transform: translateX(3px);
+}
+
+.blu-srv-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--a-purple) 12%, var(--surface));
+  color: var(--accent-text);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+
+.blu-service-link:hover .blu-srv-icon {
+  background: var(--grad);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.blu-srv-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.blu-srv-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.blu-srv-sub {
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.blu-srv-arr {
+  color: var(--accent-text);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.blu-service-link:hover .blu-srv-arr {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.blu-mega-footer {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.blu-footer-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.blu-footer-all:hover {
+  transform: translateX(3px);
+  color: var(--a-purple);
+}
+
+.blu-sparkle {
+  color: var(--a-purple);
+  font-size: 14px;
+}
+
+.blu-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.blu-footer-hint {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.blu-footer-cta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--grad);
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.blu-footer-cta:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* ── Directory Dropdown ───────── */
+.blu-dir-mega {
+  width: min(840px, 94vw);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dir-menu-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dir-menu-title a {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.dir-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Mobile Services Accordion ───────── */
+.blu-m-services {
+  padding: 8px 4px 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.blu-m-domain-group {
+  display: grid;
+  gap: 6px;
+}
+
+.blu-m-domain-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  padding-left: 6px;
+  margin-bottom: 2px;
+}
+
+.blu-m-srv-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.blu-m-srv-item .m-ico {
+  color: var(--accent-text);
+  display: grid;
+  place-items: center;
+}
+
+/* ── Domain Filter Tabs (Services Showcase) ───────── */
+.blu-tabs-wrap {
+  margin-top: 36px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.blu-tabs {
+  display: inline-flex;
+  gap: 8px;
+  padding: 5px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.blu-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.blu-tab:hover {
+  color: var(--text);
+}
+
+.blu-tab.active {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .blu-tab.active {
+  background: #0f0a1c;
+  color: #ffffff;
+}
+
+.blu-tab-ico {
+  display: grid;
+  place-items: center;
+}
+
+.blu-tab-count {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  background: color-mix(in srgb, currentColor 18%, transparent);
+}
+
+/* ── Blutech Interactive Service Cards Grid ───────── */
+.blu-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.blu-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--text);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.blu-card:hover {
+  border-color: var(--a-purple);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px -22px var(--glow);
+}
+
+.blu-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.blu-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.blu-card-idx {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.blu-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.blu-card-title {
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+  flex: 1;
+}
+
+/* Signature Blutech 52x52px Dashed Arrow */
+.blu-card-arrow {
+  width: 52px;
+  height: 52px;
+  border: 1px dashed var(--border);
+  background: color-mix(in srgb, var(--a-purple) 10%, var(--surface));
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-text);
+  flex-shrink: 0;
+  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blu-card:hover .blu-card-arrow {
+  background: var(--grad);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateX(3px) rotate(-45deg);
+  box-shadow: 0 8px 20px -6px var(--glow);
+}
+
+.blu-card-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  min-height: 44px;
+}
+
+/* ── Interactive Architecture Visualizer Box ───────── */
+.blu-card-visual {
+  width: 100%;
+  height: 230px;
+  border: 1px dashed color-mix(in srgb, var(--border) 90%, var(--a-purple));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-2) 75%, var(--surface));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+}
+
+.blu-card:hover .blu-card-visual {
+  border-color: var(--a-purple);
+}
+
+.blu-card-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.blu-card-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.blu-tool-chip {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.blu-card-explore {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.2s;
+}
+
+.blu-card:hover .blu-card-explore {
+  transform: translateX(3px);
+}
+
+.blu-showcase-cta {
+  margin-top: 56px;
+  padding: 32px 36px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--grad);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--a-purple) 6%, var(--surface));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.blu-showcase-text h4 {
+  font-size: clamp(18px, 2.2vw, 24px);
+  margin-bottom: 6px;
+}
+
+.blu-showcase-text p {
+  color: var(--muted);
+  font-size: 14.5px;
+  max-width: 600px;
+}
+
+/* ── SVG Architecture Diagram Components ───────── */
+.diag-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.diag-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.diag-edge {
+  stroke: var(--border);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.diag-edge-dashed {
+  stroke-dasharray: 4 4;
+  stroke: color-mix(in srgb, var(--a-purple) 50%, var(--border));
+}
+
+.diag-packet {
+  fill: var(--a-purple);
+  filter: drop-shadow(0 0 4px var(--a-purple));
+}
+
+.diag-node-box {
+  fill: var(--surface);
+  stroke: var(--border);
+  stroke-width: 1.2;
+  transition: stroke 0.3s, fill 0.3s;
+}
+
+.diag-node-box.accent {
+  stroke: var(--a-purple);
+  fill: color-mix(in srgb, var(--a-purple) 10%, var(--surface));
+}
+
+.diag-container.hovered .diag-node-box {
+  stroke: color-mix(in srgb, var(--a-purple) 60%, var(--border));
+}
+
+.node-status-dot {
+  fill: var(--a-purple);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.diag-node-title {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  fill: var(--text);
+}
+
+.diag-node-sub {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 500;
+  fill: var(--muted);
+}
+
+/* ── Dedicated Service Detail Page (Blutech Alternating Layout) ───────── */
+.blu-service-page {
+  position: relative;
+}
+
+.blu-service-hero {
+  padding: calc(var(--nav-h) + 60px) 0 60px;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(80% 120% at 90% 10%, var(--glow), transparent 70%);
+}
+
+.blu-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.blu-crumbs a {
+  color: var(--accent-text);
+}
+
+.crumb-sep {
+  opacity: 0.5;
+}
+
+.crumb-current {
+  color: var(--text);
+}
+
+.blu-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--a-purple) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--a-purple) 30%, transparent);
+  color: var(--accent-text);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.blu-hero-title {
+  font-size: clamp(32px, 5.2vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 18px;
+  max-width: 980px;
+}
+
+.blu-hero-lead {
+  font-size: clamp(17px, 2vw, 22px);
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  max-width: 780px;
+  font-weight: 500;
+}
+
+.blu-hero-sub {
+  font-size: 15.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.blu-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.blu-hero-meta-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.meta-lbl {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.meta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.meta-chip {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.meta-chip-alt {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  border: 1px solid color-mix(in srgb, var(--a-purple) 25%, transparent);
+  color: var(--accent-text);
+}
+
+/* ── Alternating Capability Rows (Blutech Al Pattern) ───────── */
+.blu-al-rows {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+}
+
+.blu-al-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.blu-al-row:last-child {
+  border-bottom: none;
+}
+
+.blu-al-box {
+  width: 100%;
+  height: 320px;
+  border: 1px dashed color-mix(in srgb, var(--border) 90%, var(--a-purple));
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-2) 80%, var(--surface));
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 16px 40px -20px var(--glow);
+}
+
+.blu-al-box-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.blu-al-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.blu-al-idx {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--accent-text);
+}
+
+.blu-al-title {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.blu-al-desc {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+.blu-al-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-top: 6px;
+}
+
+/* ── Related Services Grid ───────── */
+.blu-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.blu-related-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.blu-related-card:hover {
+  border-color: var(--a-purple);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px -20px var(--glow);
+}
+
+.rel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rel-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.rel-arr {
+  color: var(--muted);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.blu-related-card:hover .rel-arr {
+  color: var(--accent-text);
+  transform: translateX(4px);
+}
+
+.blu-related-card h4 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.blu-related-card p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── Responsive Adaptations ───────── */
+@media (max-width: 1080px) {
+  .blu-mega-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .blu-al-row {
+    gap: 36px;
+  }
+  .blu-related-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 940px) {
+  .blu-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .blu-al-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 44px 0;
+  }
+  .layout-box-left .blu-al-col-left {
+    order: 2;
+  }
+  .layout-box-left .blu-al-col-right {
+    order: 1;
+  }
+  .blu-hero-meta-bar {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .blu-related-grid {
+    grid-template-columns: 1fr;
+  }
+}

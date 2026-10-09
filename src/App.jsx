@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Home, Services, WorkPage, TeamPage, ContactPage } from "./pages";
 import { GroupIndexPage, DetailPage } from "./components/Detail";
+import ServiceDetail from "./components/ServiceDetail";
 import ProjectDetail from "./components/Project";
 import { AidPopup } from "./components/DecisionAid";
 import { EASE } from "./components/ui";
@@ -31,7 +32,8 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/:slug" element={<DetailPage groupPath="services" />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+
           <Route path="/platforms" element={<GroupIndexPage groupPath="platforms" />} />
           <Route path="/platforms/:slug" element={<DetailPage groupPath="platforms" />} />
           <Route path="/industries" element={<GroupIndexPage groupPath="industries" />} />

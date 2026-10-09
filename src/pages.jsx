@@ -5,7 +5,8 @@ import { Directory, Cta } from "./components/Footer";
 import StudioAbout from "./components/Team";
 import ContactSection from "./components/Contact";
 import { AidSection } from "./components/DecisionAid";
-import { Situations, ServicesGrid } from "./components/RoutePicker";
+import { Situations } from "./components/RoutePicker";
+import { ServicesShowcase } from "./components/ServicesShowcase";
 import { PageHero, Reveal, Icon, SectionHead } from "./components/ui";
 import { DIRECTORY, GROUP_PATH, slugOf } from "./data/content";
 import { Link } from "react-router-dom";
@@ -41,7 +42,7 @@ export function Home() {
     <>
       <Hero />
       <Situations num="01" />
-      <ServicesGrid num="02" />
+      <ServicesShowcase num="02" />
       <Stack num="03" />
       <Work num="04" limit={4} preview={false} />
       <Process num="05" />
@@ -57,17 +58,19 @@ export function Services() {
     <>
       <PageHero
         num="S"
-        eyebrow="Services"
+        eyebrow="Services & Capabilities"
         title="Everything needed to ship a serious product."
-        sub="Certified across the tools we ship with, every day."
+        sub="Senior-led engineering across AI systems, SaaS platforms, and digital product design."
       />
-      <Capabilities num="01" />
-      <Certifications num="02" />
-      <Engagements num="03" />
-      <Directory num="04" />
+      <ServicesShowcase num="01" />
+      <Capabilities num="02" />
+      <Certifications num="03" />
+      <Engagements num="04" />
+      <Directory num="05" />
     </>
   );
 }
+
 
 export function WorkPage() {
   return (
