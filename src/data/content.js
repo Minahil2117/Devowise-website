@@ -17,15 +17,19 @@ export const GROUP_PATH = {
 };
 
 export const HERO = {
-  eyebrow: "Because Your Success Is Our Story",
-  title: "We design and build AI-powered digital products that scale businesses.",
-  sub: "Devowise is a product and design studio crafting SaaS, AI systems, and high-performance web experiences.",
+  eyebrow: "✦ AI-Powered Product Engineering for Enterprises who Believe.",
+  title: "AI-Powered Product Engineering for Enterprises who Believe.",
+  sub: "We design, build, and scale AI Systems, SaaS Platforms, & Custom Software that work in production - not just in demos.",
+  ctaPrimary: "Free Brainstorming Session",
+  ctaSecondary: "See How We Build",
   stats: [
-    { value: 14, suffix: "+", label: "Products Shipped" },
-    { value: 4, pad: true, label: "Projects Ongoing" },
+    { value: 70, suffix: "+", label: "Products Shipped" },
+    { value: 100, prefix: "$", suffix: "M+", label: "Growth Enabled" },
+    { value: 99.8, suffix: "%", decimals: 1, label: "On-Time Delivery" },
     { value: 4.9, suffix: "/5", decimals: 1, label: "Client Satisfaction" },
   ],
 };
+
 
 export const CAPABILITIES = [
   {
@@ -310,6 +314,170 @@ export const CLIENTS = [
 
 export const logoDev = (domain) =>
   `https://img.logo.dev/${domain}?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&format=png&size=64&retina=true`;
+
+export const BYTECORP_PILLARS = [
+  {
+    id: "ai-data",
+    label: "AI & Data",
+    color: "#DC3514",
+    headline: "Production AI systems, built to ship.",
+    desc: "From custom LLM architectures to high-throughput data lakes: we build deterministic AI pipelines with evals, guardrails, and real-time observability.",
+    tag: "Verified & Audited",
+    items: [
+      { num: "01", title: "Applied Machine Learning", desc: "Fine-tuned models, autonomous agents, and inference routing built for speed and strict latency budgets." },
+      { num: "02", title: "Data Engineering & Analytics", desc: "Real-time streaming pipelines, vector indexing, and scalable lakehouse architectures that never break." },
+      { num: "03", title: "AI Consultancy & Strategy", desc: "Technical discovery, AI readiness audits, and proof-of-value scoping before spending months on engineering." }
+    ],
+    slug: "/services/mvp-doctor"
+  },
+  {
+    id: "design",
+    label: "Design",
+    color: "#E86EAC",
+    headline: "Product Design users actually adopt.",
+    desc: "Interfaces that build trust and turn every interaction into revenue. Tokenized design systems and UX flows crafted for enterprise complexity.",
+    tag: "UX / UI & Systems",
+    items: [
+      { num: "01", title: "UX Design Consultancy", desc: "User research, cognitive journey mapping, and interactive wireframing that remove friction from complex workflows." },
+      { num: "02", title: "UI Design & Design Systems", desc: "Figma design libraries, token handoffs, and pixel-perfect component architectures ready for production." },
+      { num: "03", title: "Brand Design Consultancy", desc: "Visual identities, typography systems, and high-conversion brand experiences that command market authority." }
+    ],
+    slug: "/services/branding-ui-ux-web-development"
+  },
+  {
+    id: "engineering",
+    label: "Engineering",
+    color: "#93E3AE",
+    headline: "Web, Mobile, and SaaS, built to scale.",
+    desc: "Full-stack cloud engineering on React 19, Next.js, and edge networks. Modular, tested codebases engineered for institutional-grade reliability.",
+    tag: "Full-Stack & Cloud",
+    items: [
+      { num: "01", title: "Web & Mobile App Development", desc: "Cross-platform mobile apps and edge web platforms built for 60fps responsiveness and zero-downtime." },
+      { num: "02", title: "MVP Design & Development", desc: "Rapid 4-to-6 week sprints from technical scoping to working software in the hands of real users." },
+      { num: "03", title: "DevOps & Cloud Infrastructure", desc: "Kubernetes, Docker, automated CI/CD pipelines, and multi-region AWS/GCP clusters." },
+      { num: "04", title: "QA & Automated Testing", desc: "End-to-end regression test suites, penetration testing, and continuous verification on every PR." }
+    ],
+    slug: "/services/saas-development"
+  },
+  {
+    id: "security",
+    label: "Security",
+    color: "#52E8F8",
+    headline: "Security engineered in, not bolted on.",
+    desc: "End-to-end cybersecurity, compliance readiness (SOC2, ISO27001), vulnerability mitigation, and infrastructure hardening for peace of mind.",
+    tag: "Cybersecurity & GRC",
+    items: [
+      { num: "01", title: "Governance, Risk & Compliance (GRC)", desc: "Audit frameworks, policy automation, and compliance certification support for enterprise clients." },
+      { num: "02", title: "Cloud, Network & Application Security", desc: "Zero-trust architecture, encrypted secret management, and edge firewall protections against attack vectors." },
+      { num: "03", title: "Threat Monitoring & Vulnerability Management", desc: "24/7 automated vulnerability scanning, anomaly detection, and rapid incident response protocols." },
+      { num: "04", title: "Security Consulting & Advisory", desc: "Senior virtual CISO advisory, technical threat modeling, and third-party vendor security audits." }
+    ],
+    slug: "/services/elastic-infrastructure"
+  }
+];
+
+export const BYTECORP_PROCESS = {
+  eyebrow: "Product Engineering Process",
+  title: "Our Product Engineering Process: Discovery, Design, Build, Scale",
+  sub: "We think before we build — that's why our products ship. Every engagement starts with understanding the problem, not opening a text editor.",
+  steps: [
+    {
+      num: "01",
+      title: "Discovery",
+      phase: "Phase 01 · Weeks 1–2",
+      desc: "Product strategy, technical architecture scoping, user research, and domain modeling. We align on measurable outcomes before committing code.",
+      deliverables: ["Product Requirements Document", "System Architecture Blueprint", "Technical Feasibility Study", "Sprint Roadmap"]
+    },
+    {
+      num: "02",
+      title: "Design",
+      phase: "Phase 02 · Weeks 2–4",
+      desc: "Interactive wireframes, high-fidelity prototypes, and design systems in Figma. Validated through user walkthroughs to eliminate friction early.",
+      deliverables: ["Figma Interactive Prototype", "Design System & Tokens", "Component Library", "User Journey Flowmaps"]
+    },
+    {
+      num: "03",
+      title: "Build",
+      phase: "Phase 03 · Weeks 4–10",
+      desc: "Full-stack engineering on modern cloud stacks. Weekly demos, transparent PR reviews, and automated testing to ensure software holds under load.",
+      deliverables: ["Production-Grade Codebase", "API & Database Schema", "Automated E2E Test Suite", "Multi-Tenant Cloud Deploy"]
+    },
+    {
+      num: "04",
+      title: "Scale",
+      phase: "Phase 04 · Continuous",
+      desc: "Telemetry, performance optimization, unit economics audit, and security monitoring as your user base and concurrency grow.",
+      deliverables: ["Observability & Logging", "Cost Optimization Report", "Performance SLA Guarantee", "Dedicated Support"]
+    }
+  ]
+};
+
+export const BYTECORP_TESTIMONIALS = {
+  eyebrow: "Client Stories & Trust",
+  title: "Don't Take Our Word For It.",
+  sub: "What founders, CTOs, and product directors say about working with our product engineering team.",
+  items: [
+    {
+      quote: "Devowise engineered our entire AI data pipeline and recruitment matching engine from scratch. They shipped a production system in weeks that now processes tens of thousands of records flawlessly.",
+      author: "Tariq Al-Mansoor",
+      role: "Co-Founder & CTO",
+      company: "JobFit AI",
+      metric: "10x Faster Hiring Cycles"
+    },
+    {
+      quote: "Unlike agencies that just build pretty mockups, Devowise engineers real systems that hold up under institutional load. Their design system and Next.js engineering elevated our product to Series A readiness.",
+      author: "Elena Rostova",
+      role: "VP of Product",
+      company: "MindMesh Global",
+      metric: "$14M Raised in Series A"
+    },
+    {
+      quote: "From day one, their senior engineers worked directly with our team with zero bureaucracy. They hardened our prototypes into bank-grade financial software with bulletproof security.",
+      author: "Marcus Chen",
+      role: "Head of Engineering",
+      company: "PrismPay Fintech",
+      metric: "99.99% Uptime in Production"
+    }
+  ]
+};
+
+export const BYTECORP_STUDIO = {
+  eyebrow: "From Our Studio",
+  title: "Our ideas take shape in Our Studio as well.",
+  sub: "When we are not building for enterprise partners, we engineer our own internal products, open-source AI tools, and digital ventures.",
+  products: [
+    {
+      name: "BuildShip Automation",
+      tag: "Venture Product",
+      desc: "Low-code backend visual workflow builder powered by AI for rapid API orchestration and data jobs.",
+      stats: "15k+ Active Builders"
+    },
+    {
+      name: "Lumina AI Agent Engine",
+      tag: "Open Source",
+      desc: "Deterministic agent state machines with automatic guardrails, tool calls, and fallback execution.",
+      stats: "3.2k GitHub Stars"
+    },
+    {
+      name: "BatchQ Data Pipeline",
+      tag: "SaaS Spinout",
+      desc: "Real-time AI competitor intelligence and large-scale web research extraction engine.",
+      stats: "1M+ Records Daily"
+    }
+  ]
+};
+
+export const BYTECORP_WAVES = {
+  eyebrow: "Global Impact",
+  title: "Always making Waves Globally.",
+  sub: "Partnering with visionary enterprises across London, Dubai, San Francisco, and Singapore.",
+  stats: [
+    { value: "70+", label: "Products Shipped", sub: "Production systems delivered on time" },
+    { value: "$100M+", label: "Enterprise Growth Enabled", sub: "Capital raised & revenue generated by clients" },
+    { value: "99.8%", label: "On-Time SLA Delivery", sub: "Zero compromise on quality and commitments" },
+    { value: "4.9 / 5", label: "Clutch & Client Rating", sub: "Across 40+ verified client evaluations" }
+  ]
+};
 
 export const SERVICE_DOMAINS = [
   {

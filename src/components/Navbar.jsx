@@ -1,21 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { SERVICES, SERVICE_DOMAINS, DIRECTORY, GROUP_PATH, slugOf, LINKS } from "../data/content";
+import { LINKS } from "../data/content";
 import { LOGO_SRC } from "../logoData";
 import logoImg from "../assets/logo.png";
-import { Icon, EASE } from "./ui";
+import { EASE } from "./ui";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAcc, setMobileAcc] = useState(null);
   const location = useLocation();
   const closeTimer = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 14);
+    const onScroll = () => setScrolled(window.scrollY > 15);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -28,432 +28,357 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
-  // Close menus on page route changes
   useEffect(() => {
-    setActiveMenu(null);
+    setOpenDropdown(null);
     setMobileOpen(false);
   }, [location.pathname]);
 
-  const handleOpen = (menu) => {
+  const handleMouseEnter = (name) => {
     clearTimeout(closeTimer.current);
-    setActiveMenu(menu);
+    setOpenDropdown(name);
   };
 
-  const handleScheduleClose = () => {
+  const handleMouseLeave = () => {
     clearTimeout(closeTimer.current);
     closeTimer.current = setTimeout(() => {
-      setActiveMenu(null);
-    }, 180);
+      setOpenDropdown(null);
+    }, 150);
   };
 
-  // Group services by domain
-  const servicesByDomain = SERVICE_DOMAINS.map((dom) => ({
-    ...dom,
-    services: SERVICES.filter((s) => s.domain === dom.id),
-  }));
-
   const isServicesActive = location.pathname.startsWith("/services");
-
-  // Secondary groups for 'More' dropdown
-  const secondaryGroups = DIRECTORY.groups.filter((g) => g.name !== "Services");
+  const isAboutActive = location.pathname === "/team";
+  const isWorkActive = location.pathname.startsWith("/work");
+  const isEnterpriseActive = location.pathname.startsWith("/solutions");
+  const isProductsActive = location.pathname.startsWith("/platforms");
 
   return (
     <>
-      <header className={`nav ${scrolled || activeMenu ? "scrolled" : ""} ${mobileOpen ? "open" : ""}`}>
-        <div className="nav-inner">
-          <Link className="brand" to="/" aria-label="Devowise home">
+      <header className={`byte-nav ${scrolled ? "scrolled" : ""}`}>
+        <div className="byte-nav-inner">
+          {/* Logo */}
+          <Link className="byte-brand" to="/" aria-label="Devowise Home">
             <img
               src={logoImg || LOGO_SRC}
               alt="Devowise logo"
+              className="byte-logo-img"
               onError={(e) => {
                 e.currentTarget.src = LOGO_SRC;
               }}
             />
+            <span className="byte-brand-text">Devowise</span>
           </Link>
 
-          <nav className="nav-links" aria-label="Primary">
+          {/* Center Navigation (ByteCorp Menu) */}
+          <nav className="byte-nav-links" aria-label="Main Navigation">
             <Link
               to="/"
-              className={`nav-link ${location.pathname === "/" ? "router-active" : ""}`}
+              className={`byte-nav-link ${location.pathname === "/" ? "active" : ""}`}
             >
               Home
             </Link>
 
-            {/* Blutech Consulting Services Mega-Menu Trigger */}
+            <Link
+              to="/team"
+              className={`byte-nav-link ${isAboutActive ? "active" : ""}`}
+            >
+              About Us
+            </Link>
+
+            {/* Services Dropdown (ByteCorp 4 Pillars) */}
             <div
-              className={`nav-item ${activeMenu === "services" ? "active" : ""}`}
-              onMouseEnter={() => handleOpen("services")}
-              onMouseLeave={handleScheduleClose}
+              className="byte-nav-item"
+              onMouseEnter={() => handleMouseEnter("services")}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 type="button"
-                className={`nav-link nav-trigger ${isServicesActive ? "router-active" : ""}`}
-                aria-haspopup="true"
-                aria-expanded={activeMenu === "services"}
+                className={`byte-nav-link byte-dropdown-trigger ${isServicesActive ? "active" : ""}`}
+                aria-expanded={openDropdown === "services"}
                 onClick={() =>
-                  setActiveMenu(activeMenu === "services" ? null : "services")
+                  setOpenDropdown(openDropdown === "services" ? null : "services")
                 }
               >
-                Services
-                <span className={`chev ${activeMenu === "services" ? "rotated" : ""}`}>
-                  <Icon name="chev" size={14} />
-                </span>
+                <span>Services</span>
+                <svg
+                  className={`byte-chev ${openDropdown === "services" ? "rotated" : ""}`}
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
               </button>
 
               <AnimatePresence>
-                {activeMenu === "services" && (
+                {openDropdown === "services" && (
                   <motion.div
-                    className="blu-mega-panel"
-                    initial={{ opacity: 0, y: 12, scale: 0.985 }}
+                    className="byte-dropdown-menu"
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.985 }}
-                    transition={{ duration: 0.24, ease: EASE }}
-                    onMouseEnter={() => handleOpen("services")}
-                    onMouseLeave={handleScheduleClose}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.2, ease: EASE }}
+                    onMouseEnter={() => handleMouseEnter("services")}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    <div className="blu-mega-grid">
-                      {servicesByDomain.map((domain) => (
-                        <div key={domain.id} className="blu-mega-col">
-                          <div className="blu-col-header">
-                            <span className="blu-col-icon">
-                              <Icon name={domain.icon} size={16} />
-                            </span>
-                            <span className="blu-col-title">{domain.label}</span>
-                          </div>
-                          <p className="blu-col-desc">{domain.desc}</p>
-                          <div className="blu-col-links">
-                            {domain.services.map((srv) => (
-                              <Link
-                                key={srv.slug}
-                                to={`/services/${srv.slug}`}
-                                className={`blu-service-link ${location.pathname === `/services/${srv.slug}` ? "active" : ""}`}
-                                onClick={() => setActiveMenu(null)}
-                              >
-                                <span className="blu-srv-icon">
-                                  <Icon name={srv.icon} size={18} />
-                                </span>
-                                <div className="blu-srv-info">
-                                  <span className="blu-srv-name">{srv.title}</span>
-                                  <span className="blu-srv-sub">{srv.desc}</span>
-                                </div>
-                                <span className="blu-srv-arr">
-                                  <Icon name="arrow" size={14} />
-                                </span>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="blu-mega-footer">
-                      <Link
-                        to="/services"
-                        className="blu-footer-all"
-                        onClick={() => setActiveMenu(null)}
-                      >
-                        <span className="blu-sparkle">✦</span>
-                        <span>Explore All Services & Capabilities</span>
-                        <Icon name="arrow" size={15} />
-                      </Link>
-                      <div className="blu-footer-right">
-                        <span className="blu-footer-hint">Need a custom scope?</span>
-                        <a
-                          href={LINKS.calendly}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="blu-footer-cta"
-                        >
-                          Book 30-min Technical Scoping →
-                        </a>
-                      </div>
-                    </div>
+                    <Link
+                      to="/services/mvp-doctor"
+                      className="byte-dropdown-item"
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      <span className="byte-item-dot dot-ai" />
+                      <span>AI & Data</span>
+                    </Link>
+                    <Link
+                      to="/services/branding-ui-ux-web-development"
+                      className="byte-dropdown-item"
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      <span className="byte-item-dot dot-design" />
+                      <span>Design</span>
+                    </Link>
+                    <Link
+                      to="/services/saas-development"
+                      className="byte-dropdown-item"
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      <span className="byte-item-dot dot-eng" />
+                      <span>Engineering</span>
+                    </Link>
+                    <Link
+                      to="/services/elastic-infrastructure"
+                      className="byte-dropdown-item"
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      <span className="byte-item-dot dot-sec" />
+                      <span>Security</span>
+                    </Link>
+                    <div className="byte-dropdown-divider" />
+                    <Link
+                      to="/services"
+                      className="byte-dropdown-item-all"
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      <span>View All Services</span>
+                      <span>→</span>
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            {/* More / Directory Groups Dropdown */}
-            <div
-              className={`nav-item ${activeMenu === "more" ? "active" : ""}`}
-              onMouseEnter={() => handleOpen("more")}
-              onMouseLeave={handleScheduleClose}
+            <Link
+              to="/solutions"
+              className={`byte-nav-link ${isEnterpriseActive ? "active" : ""}`}
             >
-              <button
-                type="button"
-                className="nav-link nav-trigger"
-                aria-haspopup="true"
-                aria-expanded={activeMenu === "more"}
-                onClick={() => setActiveMenu(activeMenu === "more" ? null : "more")}
-              >
-                Directory
-                <span className={`chev ${activeMenu === "more" ? "rotated" : ""}`}>
-                  <Icon name="chev" size={14} />
-                </span>
-              </button>
-
-              <AnimatePresence>
-                {activeMenu === "more" && (
-                  <motion.div
-                    className="mega blu-dir-mega"
-                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.22, ease: EASE }}
-                    onMouseEnter={() => handleOpen("more")}
-                    onMouseLeave={handleScheduleClose}
-                  >
-                    {secondaryGroups.slice(0, 4).map((g) => (
-                      <div key={g.name} className="dir-menu-col">
-                        <div className="dir-menu-title">
-                          <Link
-                            to={`/${GROUP_PATH[g.name]}`}
-                            onClick={() => setActiveMenu(null)}
-                          >
-                            {g.name} →
-                          </Link>
-                        </div>
-                        <div className="dir-menu-items">
-                          {g.items.slice(0, 5).map(([label, url]) => (
-                            <Link
-                              key={label}
-                              to={`/${GROUP_PATH[g.name]}/${slugOf(url)}`}
-                              onClick={() => setActiveMenu(null)}
-                            >
-                              <span className="dot" />
-                              {label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              Enterprise
+            </Link>
 
             <Link
               to="/work"
-              className={`nav-link ${location.pathname === "/work" ? "router-active" : ""}`}
+              className={`byte-nav-link ${isWorkActive ? "active" : ""}`}
             >
-              Work
+              Case Studies
             </Link>
+
             <Link
-              to="/team"
-              className={`nav-link ${location.pathname === "/team" ? "router-active" : ""}`}
+              to="/platforms"
+              className={`byte-nav-link ${isProductsActive ? "active" : ""}`}
             >
-              Team
+              Products
             </Link>
-            <Link
-              to="/contact"
-              className={`nav-link ${location.pathname === "/contact" ? "router-active" : ""}`}
+
+            {/* Media Dropdown */}
+            <div
+              className="byte-nav-item"
+              onMouseEnter={() => handleMouseEnter("media")}
+              onMouseLeave={handleMouseLeave}
             >
-              Contact
-            </Link>
+              <button
+                type="button"
+                className="byte-nav-link byte-dropdown-trigger"
+                aria-expanded={openDropdown === "media"}
+                onClick={() =>
+                  setOpenDropdown(openDropdown === "media" ? null : "media")
+                }
+              >
+                <span>Media</span>
+                <svg
+                  className={`byte-chev ${openDropdown === "media" ? "rotated" : ""}`}
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+
+              <AnimatePresence>
+                {openDropdown === "media" && (
+                  <motion.div
+                    className="byte-dropdown-menu"
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.2, ease: EASE }}
+                    onMouseEnter={() => handleMouseEnter("media")}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      to="/resources"
+                      className="byte-dropdown-item"
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      Blog & Resources
+                    </Link>
+                    <Link
+                      to="/#studio"
+                      className="byte-dropdown-item"
+                      onClick={() => setOpenDropdown(null)}
+                    >
+                      Studio Ventures
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
-          <div className="nav-actions">
+          {/* Right Action: Free Brainstorming Session */}
+          <div className="byte-nav-actions">
             <a
-              className="btn btn-solid nav-cta"
+              className="btn-brainstorm"
               href={LINKS.calendly}
               target="_blank"
               rel="noreferrer"
             >
-              Book a Call
+              Free Brainstorming Session
             </a>
+
             <button
-              className="hamburger"
-              aria-label="Open menu"
+              className="byte-hamburger"
+              aria-label="Toggle navigation menu"
               onClick={() => setMobileOpen(true)}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                fill="none"
-              >
-                <path d="M4 7h16M4 12h16M4 17h16" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Slide-Over Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="mobile-menu"
-            initial={{ opacity: 0, y: -16 }}
+            className="byte-mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.3, ease: EASE }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.28, ease: EASE }}
           >
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+            <div className="byte-mobile-header">
+              <span className="byte-brand-text">Devowise</span>
               <button
-                className="hamburger"
-                style={{ display: "grid" }}
+                className="byte-close-btn"
                 aria-label="Close menu"
                 onClick={() => setMobileOpen(false)}
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                   <path d="M6 6l12 12M18 6L6 18" />
                 </svg>
               </button>
             </div>
 
-            <div className="m-group">
-              <Link
-                to="/"
-                className="m-head"
-                style={{ textDecoration: "none" }}
-                onClick={() => setMobileOpen(false)}
-              >
+            <div className="byte-mobile-links">
+              <Link to="/" onClick={() => setMobileOpen(false)}>
                 Home
               </Link>
-            </div>
+              <Link to="/team" onClick={() => setMobileOpen(false)}>
+                About Us
+              </Link>
 
-            {/* Services Accordion in Mobile */}
-            <div className="m-group">
-              <button
-                className="m-head"
-                onClick={() =>
-                  setMobileAcc(mobileAcc === "Services" ? null : "Services")
-                }
-              >
-                <span>Services</span>
-                <motion.span
-                  animate={{ rotate: mobileAcc === "Services" ? 45 : 0 }}
-                  style={{ color: "var(--accent-text)", display: "grid" }}
-                >
-                  <Icon name="plus" size={18} />
-                </motion.span>
-              </button>
-              <AnimatePresence initial={false}>
-                {mobileAcc === "Services" && (
-                  <motion.div
-                    className="m-items blu-m-services"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: EASE }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <Link
-                      to="/services"
-                      style={{
-                        fontWeight: 700,
-                        color: "var(--accent-text)",
-                        marginBottom: 6,
-                      }}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      ✦ All Services Overview →
-                    </Link>
-                    {servicesByDomain.map((domain) => (
-                      <div key={domain.id} className="blu-m-domain-group">
-                        <span className="blu-m-domain-title">{domain.label}</span>
-                        {domain.services.map((s) => (
-                          <Link
-                            key={s.slug}
-                            to={`/services/${s.slug}`}
-                            className="blu-m-srv-item"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            <span className="m-ico">
-                              <Icon name={s.icon} size={16} />
-                            </span>
-                            <span>{s.title}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Other Directory Groups */}
-            {secondaryGroups.slice(0, 3).map((g) => (
-              <div className="m-group" key={g.name}>
+              {/* Mobile Services Accordion */}
+              <div className="byte-mobile-accordion">
                 <button
-                  className="m-head"
+                  type="button"
+                  className="byte-mobile-acc-btn"
                   onClick={() =>
-                    setMobileAcc(mobileAcc === g.name ? null : g.name)
+                    setMobileAcc(mobileAcc === "services" ? null : "services")
                   }
                 >
-                  {g.name}
-                  <motion.span
-                    animate={{ rotate: mobileAcc === g.name ? 45 : 0 }}
-                    style={{ color: "var(--accent-text)", display: "grid" }}
-                  >
-                    <Icon name="plus" size={18} />
-                  </motion.span>
+                  <span>Services</span>
+                  <span className={`byte-acc-icon ${mobileAcc === "services" ? "open" : ""}`}>
+                    +
+                  </span>
                 </button>
-                <AnimatePresence initial={false}>
-                  {mobileAcc === g.name && (
+                <AnimatePresence>
+                  {mobileAcc === "services" && (
                     <motion.div
-                      className="m-items"
+                      className="byte-mobile-subitems"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: EASE }}
-                      style={{ overflow: "hidden" }}
+                      transition={{ duration: 0.25 }}
                     >
-                      {g.items.map(([label, url]) => (
-                        <Link
-                          key={label}
-                          to={`/${GROUP_PATH[g.name]}/${slugOf(url)}`}
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {label}
-                        </Link>
-                      ))}
-                      <Link
-                        to={`/${GROUP_PATH[g.name]}`}
-                        style={{ color: "var(--accent-text)" }}
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        All {g.name} →
+                      <Link to="/services/mvp-doctor" onClick={() => setMobileOpen(false)}>
+                        <span className="byte-item-dot dot-ai" /> AI & Data
+                      </Link>
+                      <Link to="/services/branding-ui-ux-web-development" onClick={() => setMobileOpen(false)}>
+                        <span className="byte-item-dot dot-design" /> Design
+                      </Link>
+                      <Link to="/services/saas-development" onClick={() => setMobileOpen(false)}>
+                        <span className="byte-item-dot dot-eng" /> Engineering
+                      </Link>
+                      <Link to="/services/elastic-infrastructure" onClick={() => setMobileOpen(false)}>
+                        <span className="byte-item-dot dot-sec" /> Security
+                      </Link>
+                      <Link to="/services" style={{ color: "#fff", fontWeight: 600 }} onClick={() => setMobileOpen(false)}>
+                        All Services →
                       </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
-            ))}
 
-            <div className="m-group m-routes">
-              <Link to="/work" onClick={() => setMobileOpen(false)}>
-                Work
+              <Link to="/solutions" onClick={() => setMobileOpen(false)}>
+                Enterprise
               </Link>
-              <Link to="/team" onClick={() => setMobileOpen(false)}>
-                Team
+              <Link to="/work" onClick={() => setMobileOpen(false)}>
+                Case Studies
+              </Link>
+              <Link to="/platforms" onClick={() => setMobileOpen(false)}>
+                Products
+              </Link>
+              <Link to="/resources" onClick={() => setMobileOpen(false)}>
+                Media & Blog
               </Link>
               <Link to="/contact" onClick={() => setMobileOpen(false)}>
                 Contact
               </Link>
             </div>
 
-            <a
-              className="btn btn-solid"
-              href={LINKS.calendly}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => setMobileOpen(false)}
-            >
-              Book a Call
-            </a>
+            <div className="byte-mobile-cta">
+              <a
+                className="btn-byte-primary"
+                href={LINKS.calendly}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileOpen(false)}
+              >
+                Free Brainstorming Session →
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

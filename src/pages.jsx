@@ -1,54 +1,30 @@
 import { Hero, Stack } from "./components/Hero";
-import { Capabilities, Certifications, Work } from "./components/Showcase";
-import { Process, Engagements, Faq } from "./components/Studio";
+import { Certifications } from "./components/Showcase";
+import { Faq } from "./components/Studio";
 import { Directory, Cta } from "./components/Footer";
 import StudioAbout from "./components/Team";
 import ContactSection from "./components/Contact";
-import { AidSection } from "./components/DecisionAid";
-import { Situations } from "./components/RoutePicker";
+import { ByteCorpServices } from "./components/ByteCorpServices";
+import { ByteCorpProcess } from "./components/ByteCorpProcess";
+import { ByteCorpWork } from "./components/ByteCorpWork";
+import { ByteCorpWaves } from "./components/ByteCorpWaves";
+import { ByteCorpStudio } from "./components/ByteCorpStudio";
+import { ByteCorpTestimonials } from "./components/ByteCorpTestimonials";
 import { ServicesShowcase } from "./components/ServicesShowcase";
-import { PageHero, Reveal, Icon, SectionHead } from "./components/ui";
-import { DIRECTORY, GROUP_PATH, slugOf } from "./data/content";
-import { Link } from "react-router-dom";
-
-function ResourcesTeaser({ num = "05" }) {
-  const res = DIRECTORY.groups.find((g) => g.name === "Resources");
-  return (
-    <section id="resources-teaser">
-      <div className="container">
-        <SectionHead
-          num={num}
-          eyebrow="Resources"
-          title="Free guides & checklists"
-          sub="The same comparisons and checklists we use on real engagements — free to read, no email required."
-        />
-        <div className="index-grid">
-          {res.items.map(([label, url], i) => (
-            <Reveal key={label} delay={(i % 3) * 0.06}>
-              <Link className="index-card" to={`/${GROUP_PATH[res.name]}/${slugOf(url)}`}>
-                <h3>{label}</h3>
-                <span className="go"><Icon name="arrow" size={18} /></span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+import { PageHero } from "./components/ui";
 
 export function Home() {
   return (
     <>
       <Hero />
-      <Situations num="01" />
-      <ServicesShowcase num="02" />
-      <Stack num="03" />
-      <Work num="04" limit={4} preview={false} />
-      <Process num="05" />
-      <ResourcesTeaser num="06" />
-      <AidSection />
-      <Cta num={null} />
+      <ByteCorpServices />
+      <ByteCorpProcess />
+      <ByteCorpWork limit={6} />
+      <ByteCorpWaves />
+      <ByteCorpStudio />
+      <ByteCorpTestimonials />
+      <Stack num="01" />
+      <Cta />
     </>
   );
 }
@@ -59,29 +35,32 @@ export function Services() {
       <PageHero
         num="S"
         eyebrow="Services & Capabilities"
-        title="Everything needed to ship a serious product."
-        sub="Senior-led engineering across AI systems, SaaS platforms, and digital product design."
+        title="AI Development, Product Design, and Software Engineering"
+        sub="Senior-led product engineering across AI systems, SaaS platforms, design, and cybersecurity."
       />
+      <ByteCorpServices />
       <ServicesShowcase num="01" />
-      <Capabilities num="02" />
-      <Certifications num="03" />
-      <Engagements num="04" />
-      <Directory num="05" />
+      <ByteCorpProcess />
+      <Certifications num="02" />
+      <Directory num="03" />
+      <Cta />
     </>
   );
 }
-
 
 export function WorkPage() {
   return (
     <>
       <PageHero
         num="W"
-        eyebrow="Selected Work"
-        title="Products shipped, systems that scale."
+        eyebrow="Case Studies"
+        title="Products we’ve built and the results they delivered."
+        sub="70+ products shipped. $100M+ in growth enabled."
       />
+      <ByteCorpWork limit={0} />
+      <ByteCorpWaves />
       <Stack num="01" />
-      <Work num="02" />
+      <Cta />
     </>
   );
 }
@@ -90,7 +69,10 @@ export function TeamPage() {
   return (
     <>
       <StudioAbout num="01" />
+      <ByteCorpWaves />
+      <ByteCorpTestimonials />
       <Faq num="02" />
+      <Cta />
     </>
   );
 }
@@ -101,8 +83,8 @@ export function ContactPage() {
       <PageHero
         num="C"
         eyebrow="Contact"
-        title="Let's build something exceptional."
-        sub="Have an idea or product? We help turn it into a scalable digital system."
+        title="Got a product to build?"
+        sub="Book a 30-minute brainstorming session with our senior engineers."
       />
       <ContactSection />
     </>

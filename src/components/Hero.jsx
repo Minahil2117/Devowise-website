@@ -1,115 +1,112 @@
 import { motion } from "framer-motion";
-import { HERO, STACK } from "../data/content";
-import { Counter, EASE, Icon, Reveal, SectionHead, TechChip } from "./ui";
-
-const EMPHASIS = new Set(["AI-powered", "digital", "products"]);
-
-const CODE_LINES = [
-  { type: "cmd", text: "$ devowise verify --production" },
-  { type: "ok", text: "✓ AI agents & evals ......... passed" },
-  { type: "ok", text: "✓ auth, billing, tenants .... passed" },
-  { type: "ok", text: "✓ edge performance .......... 98/100" },
-  { type: "ok", text: "✓ design system coverage .... 100%" },
-  { type: "out", text: "→ ship approved. zero ceremony." },
-];
+import { HERO, STACK, CLIENTS, logoDev, LINKS } from "../data/content";
+import { Counter, EASE, Icon, Reveal, TechChip } from "./ui";
 
 export function Hero() {
-  const words = HERO.title.split(" ");
   return (
-    <section className="hero" id="top">
-      <div className="hero-glow" aria-hidden="true">
-        <span className="glow g1" />
-        <span className="glow g2" />
-        <span className="glow g3" />
-      </div>
-      <div className="container">
-        <div className="hero-inner">
-          <div>
-            <motion.span
-              className="hero-badge"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: EASE }}
-            >
-              <span className="pulse" />
-              {HERO.eyebrow}
-            </motion.span>
+    <section className="byte-hero" id="top">
+      {/* Ambient background glow & grid lines */}
+      <div className="byte-hero-spotlight" aria-hidden="true" />
+      <div className="byte-hero-grid" aria-hidden="true" />
 
-            <h1 aria-label={HERO.title}>
-              {words.map((w, i) => (
-                <span key={`${w}-${i}`}>
-                  <span className="mask">
-                    <motion.span
-                      className={`word ${EMPHASIS.has(w) ? "grad-text" : ""}`}
-                      initial={{ y: "112%" }}
-                      animate={{ y: 0 }}
-                      transition={{ duration: 0.75, delay: 0.25 + i * 0.05, ease: EASE }}
-                    >
-                      {w}
-                    </motion.span>
-                  </span>{" "}
-                </span>
-              ))}
-            </h1>
-
-            <motion.p
-              className="sub"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.8, ease: EASE }}
-            >
-              {HERO.sub}
-            </motion.p>
-          </div>
-
-          <motion.div
-            className="code-panel"
-            initial={{ opacity: 0, y: 26, rotate: 1.5 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
-            transition={{ duration: 0.9, delay: 0.7, ease: EASE }}
-          >
-            <div className="code-head">
-              <span className="cdot c1" /><span className="cdot c2" /><span className="cdot c3" />
-              <span className="code-title">devowise — production check</span>
-              <span className="live"><span className="pulse" /> live</span>
-            </div>
-            <div className="code-body">
-              {CODE_LINES.map((l, i) => (
-                <motion.span
-                  key={l.text}
-                  className={`code-line ${l.type}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 1.1 + i * 0.45, ease: EASE }}
-                >
-                  {l.text}
-                </motion.span>
-              ))}
-              <motion.span
-                className="code-line caret"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.1 + CODE_LINES.length * 0.45 }}
-              >
-                $ <span className="blink">▍</span>
-              </motion.span>
-            </div>
-          </motion.div>
-        </div>
-
+      <div className="container byte-hero-container">
+        {/* Top Eyebrow Pill */}
         <motion.div
-          className="hero-stats"
-          initial={{ opacity: 0, y: 30 }}
+          className="byte-hero-badge-wrap"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
+          transition={{ duration: 0.6, ease: EASE }}
+        >
+          <span className="byte-hero-badge">
+            <span className="byte-badge-dot" />
+            {HERO.eyebrow}
+          </span>
+        </motion.div>
+
+        {/* Main Headline */}
+        <motion.h1
+          className="byte-hero-title"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: EASE }}
+        >
+          AI-Powered Product Engineering for Enterprises who{" "}
+          <span className="byte-title-accent">Believe.</span>
+        </motion.h1>
+
+        {/* Subhead */}
+        <motion.p
+          className="byte-hero-sub"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35, ease: EASE }}
+        >
+          {HERO.sub}
+        </motion.p>
+
+        {/* Action Buttons */}
+        <motion.div
+          className="byte-hero-ctas"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
+        >
+          <a
+            className="btn-byte-primary"
+            href={LINKS.calendly}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>{HERO.ctaPrimary}</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a className="btn-byte-outline" href="#expertise">
+            <span>{HERO.ctaSecondary}</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+          </a>
+        </motion.div>
+
+        {/* Metrics Bar */}
+        <motion.div
+          className="byte-hero-stats"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
         >
           {HERO.stats.map((s) => (
-            <div className="stat" key={s.label}>
-              <Counter value={s.value} suffix={s.suffix || ""} pad={s.pad} decimals={s.decimals || 0} />
-              <div className="lbl">{s.label}</div>
+            <div className="byte-stat-cell" key={s.label}>
+              <div className="byte-stat-value">
+                {s.prefix && <span>{s.prefix}</span>}
+                <Counter value={s.value} suffix={s.suffix || ""} decimals={s.decimals || 0} />
+              </div>
+              <div className="byte-stat-label">{s.label}</div>
             </div>
           ))}
         </motion.div>
+      </div>
+
+      {/* Partner Logos Marquee (ByteCorp Minimalist Slider) */}
+      <div className="byte-logo-marquee-wrap">
+        <div className="byte-marquee-track">
+          {[...CLIENTS, ...CLIENTS, ...CLIENTS].map(([name, dom], i) => (
+            <div className="byte-logo-item" key={`${name}-${i}`}>
+              <img
+                src={logoDev(dom)}
+                alt={name}
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                  e.currentTarget.nextSibling.style.display = "inline-block";
+                }}
+              />
+              <span className="byte-logo-fallback">{name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -131,9 +128,13 @@ function MarqueeRow({ tools, rev }) {
 export function Stack({ num = "01" }) {
   const half = Math.ceil(STACK.tools.length / 2);
   return (
-    <section id="stack">
+    <section id="stack" className="byte-stack-section">
       <div className="container">
-        <SectionHead num={num} eyebrow={STACK.eyebrow} title={STACK.title} sub={STACK.sub} />
+        <div className="byte-section-head">
+          <span className="byte-section-eyebrow">TECHNOLOGY & STACK</span>
+          <h2 className="byte-section-title">{STACK.title}</h2>
+          <p className="byte-section-sub">{STACK.sub}</p>
+        </div>
         <Reveal delay={0.15}>
           <div className="marquee-wrap">
             <MarqueeRow tools={STACK.tools.slice(0, half)} />

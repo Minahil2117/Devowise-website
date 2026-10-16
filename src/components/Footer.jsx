@@ -1,36 +1,22 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { DIRECTORY, CTA, LINKS, GROUP_PATH, slugOf } from "../data/content";
+import { DIRECTORY, LINKS, GROUP_PATH, slugOf } from "../data/content";
 import { LOGO_SRC } from "../logoData";
-import { EASE, Icon, Reveal, SectionHead } from "./ui";
-
-const PAGES = [
-  ["Home", "/"],
-  ["Services", "/services"],
-  ["Work", "/work"],
-  ["Team", "/team"],
-  ["Contact", "/contact"],
-];
-
-const COMPANY = [
-  ["Case Studies", "https://www.devowise.com/case-studies"],
-  ["Blog", "https://www.devowise.com/blog"],
-  ["All Services", "/services"],
-  ["All Platforms", "/platforms"],
-  ["All Industries", "/industries"],
-  ["All Solutions", "/solutions"],
-  ["All Resources", "/resources"],
-];
+import logoImg from "../assets/logo.png";
+import { Reveal } from "./ui";
 
 export function Directory({ num = "04" }) {
   return (
-    <section id="directory">
+    <section id="directory" className="byte-directory-section">
       <div className="container">
-        <SectionHead num={num} eyebrow={DIRECTORY.eyebrow} title={DIRECTORY.title} sub={DIRECTORY.sub} />
-        <div className="dir-grid">
+        <div className="byte-section-head">
+          <span className="byte-section-eyebrow">SITE DIRECTORY</span>
+          <h2 className="byte-section-title">{DIRECTORY.title}</h2>
+          <p className="byte-section-sub">{DIRECTORY.sub}</p>
+        </div>
+        <div className="byte-dir-grid">
           {DIRECTORY.groups.map((g, i) => (
             <Reveal key={g.name} delay={(i % 3) * 0.07}>
-              <div className="dir-col">
+              <div className="byte-dir-col">
                 <h3>
                   {g.name}
                   <Link to={`/${GROUP_PATH[g.name]}`}>All →</Link>
@@ -51,35 +37,41 @@ export function Directory({ num = "04" }) {
   );
 }
 
-export function Cta({ num = "05" }) {
-  const lead = CTA.title.replace("exceptional.", "");
+export function Cta() {
   return (
-    <section id="contact">
-      <div className="container cta-box">
-        <Reveal>
-          <div className="s-head">
-            {num && <span className="s-index">( {num} )</span>}
-            <span className="eyebrow">Contact</span>
+    <section id="contact" className="byte-cta-section">
+      <div className="container">
+        <div className="byte-cta-card">
+          <div className="byte-cta-spotlight" aria-hidden="true" />
+          <div className="byte-cta-content">
+            <span className="byte-cta-badge">✦ GET IN TOUCH</span>
+            <h2 className="byte-cta-title">
+              Got a product to build? <br />
+              <span className="byte-title-accent">Let’s engineer something that scales.</span>
+            </h2>
+            <p className="byte-cta-sub">
+              Book a 30-minute brainstorming session with our principal engineers. We’ll
+              analyze your architecture, pinpoint risks, and provide a concrete action plan.
+            </p>
+
+            <div className="byte-cta-actions">
+              <a
+                className="btn-byte-primary"
+                href={LINKS.calendly}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>Free Brainstorming Session</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a className="btn-byte-outline" href={`mailto:${LINKS.email}`}>
+                <span>{LINKS.email}</span>
+              </a>
+            </div>
           </div>
-        </Reveal>
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.9, ease: EASE }}
-        >
-          {lead}
-          <span className="outline">exceptional.</span>
-        </motion.h2>
-        <Reveal delay={0.15}>
-          <p>{CTA.sub}</p>
-          <div className="hero-ctas">
-            <a className="btn btn-solid" href={LINKS.calendly} target="_blank" rel="noreferrer">
-              {CTA.call} <span className="arr"><Icon name="arrow" size={16} /></span>
-            </a>
-            <a className="btn" href={`mailto:${LINKS.email}`}>{LINKS.email}</a>
-          </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -87,52 +79,89 @@ export function Cta({ num = "05" }) {
 
 export function Footer() {
   return (
-    <footer>
+    <footer className="byte-footer">
       <div className="container">
-        <div className="foot-grid">
-          <div className="foot-brand">
-            <img src={LOGO_SRC} alt="Devowise logo" />
-            <div className="tag-line">We Build what others imagine</div>
-            <div className="motto">Because Your Success Is Our Story</div>
+        <div className="byte-foot-grid">
+          {/* Brand Column */}
+          <div className="byte-foot-brand">
+            <Link to="/" className="byte-foot-logo">
+              <img
+                src={logoImg || LOGO_SRC}
+                alt="Devowise logo"
+                onError={(e) => {
+                  e.currentTarget.src = LOGO_SRC;
+                }}
+              />
+              <span className="byte-brand-text">Devowise</span>
+            </Link>
+            <p className="byte-foot-tagline">
+              AI-Powered Product Engineering for Enterprises who Believe.
+            </p>
+            <p className="byte-foot-motto">
+              We design, build, and scale AI Systems, SaaS Platforms, & Custom Software that work in production — not just in demos.
+            </p>
+
+            <div className="byte-foot-locations">
+              <span className="loc-badge">London</span>
+              <span className="loc-badge">Dubai</span>
+              <span className="loc-badge">San Francisco</span>
+              <span className="loc-badge">Singapore</span>
+            </div>
           </div>
-          <div className="foot-col">
-            <h4>Pages</h4>
+
+          {/* Services Column */}
+          <div className="byte-foot-col">
+            <h4>Services</h4>
             <ul>
-              {PAGES.map(([label, to]) => (
-                <li key={to}><Link to={to}>{label}</Link></li>
-              ))}
+              <li><Link to="/services/mvp-doctor">Applied Machine Learning</Link></li>
+              <li><Link to="/services/ai-prototype-hardening">Data Engineering & Analytics</Link></li>
+              <li><Link to="/services/forward-deployed-ai-engineer">AI Consultancy & Agents</Link></li>
+              <li><Link to="/services/saas-development">SaaS & Full-Stack Engineering</Link></li>
+              <li><Link to="/services/branding-ui-ux-web-development">Product UX/UI Design</Link></li>
+              <li><Link to="/services/elastic-infrastructure">Security & Cloud Infrastructure</Link></li>
             </ul>
           </div>
-          <div className="foot-col">
+
+          {/* Company Column */}
+          <div className="byte-foot-col">
             <h4>Company</h4>
             <ul>
-              {COMPANY.map(([label, url]) => (
-                <li key={label}>
-                  {url.startsWith("http") ? (
-                    <a href={url} target="_blank" rel="noreferrer">{label}</a>
-                  ) : (
-                    <Link to={url}>{label}</Link>
-                  )}
-                </li>
-              ))}
+              <li><Link to="/team">About Us</Link></li>
+              <li><Link to="/work">Case Studies</Link></li>
+              <li><Link to="/#process">Our Process</Link></li>
+              <li><Link to="/#studio">Venture Studio</Link></li>
+              <li><Link to="/contact">Contact & Scoping</Link></li>
+              <li><a href={LINKS.calendly} target="_blank" rel="noreferrer">Book Discovery Call</a></li>
             </ul>
           </div>
-          <div className="foot-col">
-            <h4>Get in touch</h4>
+
+          {/* Directory & Resources Column */}
+          <div className="byte-foot-col">
+            <h4>Directory</h4>
             <ul>
-              <li><a href={`mailto:${LINKS.email}`}>{LINKS.email}</a></li>
-              <li><a href={LINKS.calendly} target="_blank" rel="noreferrer">Book a Call</a></li>
-              <li><a href={LINKS.contra} target="_blank" rel="noreferrer">Portfolio on Contra</a></li>
-              <li><a href={LINKS.site} target="_blank" rel="noreferrer">devowise.com</a></li>
+              <li><Link to="/platforms">Platforms & Stacks</Link></li>
+              <li><Link to="/industries">Industries Served</Link></li>
+              <li><Link to="/solutions">Enterprise Solutions</Link></li>
+              <li><Link to="/resources">Guides & Checklists</Link></li>
+              <li><a href={LINKS.contra} target="_blank" rel="noreferrer">Contra Portfolio</a></li>
             </ul>
           </div>
         </div>
-        <div className="foot-bottom">
-          <span>© {new Date().getFullYear()} Devowise. All rights reserved.</span>
-          <span>Devowise — We Build what others imagine</span>
+
+        {/* Bottom Bar */}
+        <div className="byte-foot-bottom">
+          <div className="byte-foot-copy">
+            © {new Date().getFullYear()} Devowise Technologies. All rights reserved.
+          </div>
+          <div className="byte-foot-links">
+            <span>Privacy Policy</span>
+            <span className="sep">•</span>
+            <span>Terms of Service</span>
+            <span className="sep">•</span>
+            <span>Security & Compliance</span>
+          </div>
         </div>
       </div>
-      <div className="foot-giant" aria-hidden="true">Devowise</div>
     </footer>
   );
 }

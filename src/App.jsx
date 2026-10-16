@@ -55,7 +55,8 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [theme] = useState("light");
+  const [theme] = useState("dark");
+
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
