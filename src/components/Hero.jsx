@@ -30,8 +30,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.15, ease: EASE }}
         >
-          AI-Powered Product Engineering for Enterprises who{" "}
-          <span className="byte-title-accent">Believe.</span>
+          {HERO.title}
         </motion.h1>
 
         {/* Subhead */}

@@ -7,23 +7,20 @@ export function ByteCorpProcess() {
     <section id="process" className="byte-process-section">
       <div className="container">
         {/* Section Header */}
-        <div className="byte-process-head-grid">
-          <div className="byte-p-head-left">
-            <span className="byte-section-eyebrow">{BYTECORP_PROCESS.eyebrow}</span>
-            <h2 className="byte-section-title">{BYTECORP_PROCESS.title}</h2>
-            <Link to="/work" className="btn-byte-primary mt-6 inline-flex">
+        <div className="byte-process-header">
+          <span className="byte-section-eyebrow">{BYTECORP_PROCESS.eyebrow}</span>
+          <h2 className="byte-section-title">{BYTECORP_PROCESS.title}</h2>
+          <p className="byte-section-sub">{BYTECORP_PROCESS.sub}</p>
+          <div className="byte-process-header-actions">
+            <Link to="/work" className="btn-byte-primary sm">
               <span>See How We’ve Built for Others</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
-          </div>
-
-          <div className="byte-p-head-right">
-            <p className="byte-p-subtext">{BYTECORP_PROCESS.sub}</p>
             <div className="byte-p-guarantee">
               <span className="byte-check-icon">✓</span>
-              <span>100% Senior Principal Engineers. Weekly Working Software Demos.</span>
+              <span>100% Senior Principal Engineers</span>
             </div>
           </div>
         </div>

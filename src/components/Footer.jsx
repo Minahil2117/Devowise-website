@@ -95,10 +95,10 @@ export function Footer() {
               <span className="byte-brand-text">Devowise</span>
             </Link>
             <p className="byte-foot-tagline">
-              AI-Powered Product Engineering for Enterprises who Believe.
+              We design and build AI-powered digital products that scale businesses.
             </p>
             <p className="byte-foot-motto">
-              We design, build, and scale AI Systems, SaaS Platforms, & Custom Software that work in production — not just in demos.
+              Devowise is a product and design studio crafting SaaS, AI systems, and high-performance web experiences.
             </p>
 
             <div className="byte-foot-locations">
@@ -141,7 +141,7 @@ export function Footer() {
             <ul>
               <li><Link to="/platforms">Platforms & Stacks</Link></li>
               <li><Link to="/industries">Industries Served</Link></li>
-              <li><Link to="/solutions">Enterprise Solutions</Link></li>
+              <li><Link to="/solutions">Digital Solutions</Link></li>
               <li><Link to="/resources">Guides & Checklists</Link></li>
               <li><a href={LINKS.contra} target="_blank" rel="noreferrer">Contra Portfolio</a></li>
             </ul>

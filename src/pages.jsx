@@ -55,7 +55,7 @@ export function WorkPage() {
         num="W"
         eyebrow="Case Studies"
         title="Products we’ve built and the results they delivered."
-        sub="70+ products shipped. $100M+ in growth enabled."
+        sub="A curated selection of production systems, SaaS platforms, and AI applications shipped for our clients."
       />
       <ByteCorpWork limit={0} />
       <ByteCorpWaves />

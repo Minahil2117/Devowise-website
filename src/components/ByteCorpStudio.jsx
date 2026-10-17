@@ -6,14 +6,12 @@ export function ByteCorpStudio() {
     <section id="studio" className="byte-studio-section">
       <div className="container">
         <div className="byte-studio-header">
-          <div>
-            <span className="byte-section-eyebrow">{BYTECORP_STUDIO.eyebrow}</span>
-            <h2 className="byte-section-title">{BYTECORP_STUDIO.title}</h2>
-            <p className="byte-section-sub">{BYTECORP_STUDIO.sub}</p>
-          </div>
-          <div>
+          <span className="byte-section-eyebrow">{BYTECORP_STUDIO.eyebrow}</span>
+          <h2 className="byte-section-title">{BYTECORP_STUDIO.title}</h2>
+          <p className="byte-section-sub">{BYTECORP_STUDIO.sub}</p>
+          <div className="byte-studio-actions">
             <a
-              className="btn-byte-outline"
+              className="btn-byte-outline sm"
               href={LINKS.calendly}
               target="_blank"
               rel="noreferrer"

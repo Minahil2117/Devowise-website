@@ -14,17 +14,14 @@ export function ByteCorpServices() {
       <div className="container">
         {/* Section Header */}
         <div className="byte-services-header">
-          <div className="byte-header-left">
-            <span className="byte-section-eyebrow">UNDER ONE ROOF</span>
-            <h2 className="byte-services-title">
-              AI Development, Product Design, and Software Engineering - under one roof
-            </h2>
-            <p className="byte-services-sub">
-              From first sketch to live system at scale: product strategy, UX, full-stack
-              engineering, AI, and cybersecurity working as one team.
-            </p>
-          </div>
-
+          <span className="byte-section-eyebrow">UNDER ONE ROOF</span>
+          <h2 className="byte-services-title">
+            AI Development, Product Design, and Software Engineering - under one roof
+          </h2>
+          <p className="byte-services-sub">
+            From first sketch to live system at scale: product strategy, UX, full-stack
+            engineering, AI, and cybersecurity working as one team.
+          </p>
           <div className="byte-header-actions">
             <Link to="/services" className="btn-byte-outline sm">
               View all Services →

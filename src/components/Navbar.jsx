@@ -48,7 +48,6 @@ export default function Navbar() {
   const isServicesActive = location.pathname.startsWith("/services");
   const isAboutActive = location.pathname === "/team";
   const isWorkActive = location.pathname.startsWith("/work");
-  const isEnterpriseActive = location.pathname.startsWith("/solutions");
   const isProductsActive = location.pathname.startsWith("/platforms");
 
   return (
@@ -56,16 +55,15 @@ export default function Navbar() {
       <header className={`byte-nav ${scrolled ? "scrolled" : ""}`}>
         <div className="byte-nav-inner">
           {/* Logo */}
-          <Link className="byte-brand" to="/" aria-label="Devowise Home">
+          <Link className="byte-brand" to="/" aria-label="Home">
             <img
               src={logoImg || LOGO_SRC}
-              alt="Devowise logo"
+              alt="Logo"
               className="byte-logo-img"
               onError={(e) => {
                 e.currentTarget.src = LOGO_SRC;
               }}
             />
-            <span className="byte-brand-text">Devowise</span>
           </Link>
 
           {/* Center Navigation (ByteCorp Menu) */}
@@ -171,12 +169,6 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <Link
-              to="/solutions"
-              className={`byte-nav-link ${isEnterpriseActive ? "active" : ""}`}
-            >
-              Enterprise
-            </Link>
 
             <Link
               to="/work"
@@ -288,7 +280,7 @@ export default function Navbar() {
             transition={{ duration: 0.28, ease: EASE }}
           >
             <div className="byte-mobile-header">
-              <span className="byte-brand-text">Devowise</span>
+              <img src={logoImg || LOGO_SRC} alt="Logo" style={{ height: "36px", width: "auto" }} />
               <button
                 className="byte-close-btn"
                 aria-label="Close menu"
@@ -351,9 +343,6 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link to="/solutions" onClick={() => setMobileOpen(false)}>
-                Enterprise
-              </Link>
               <Link to="/work" onClick={() => setMobileOpen(false)}>
                 Case Studies
               </Link>

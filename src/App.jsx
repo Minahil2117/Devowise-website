@@ -7,7 +7,6 @@ import { Home, Services, WorkPage, TeamPage, ContactPage } from "./pages";
 import { GroupIndexPage, DetailPage } from "./components/Detail";
 import ServiceDetail from "./components/ServiceDetail";
 import ProjectDetail from "./components/Project";
-import { AidPopup } from "./components/DecisionAid";
 import { EASE } from "./components/ui";
 
 function ScrollToTop() {
@@ -70,7 +69,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <AidPopup />
       <Navbar />
       <main>
         <AnimatedRoutes />
