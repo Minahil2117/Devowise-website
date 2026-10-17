@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { SERVICES, SERVICE_DOMAINS, LINKS } from "../data/content";
-import { Reveal, Icon, SectionHead } from "./ui";
-import { Process, Engagements } from "./Studio";
+import { Reveal, Icon } from "./ui";
+import { ByteCorpProcess } from "./ByteCorpProcess";
 import { Cta } from "./Footer";
 import ServiceDiagram from "./ServiceDiagram";
 
@@ -43,15 +43,16 @@ export default function ServiceDetail() {
 
               <div className="blu-hero-actions">
                 <a
-                  className="btn btn-solid"
+                  className="btn-byte-primary"
                   href={LINKS.calendly}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Book Technical Scoping <span className="arr"><Icon name="arrow" size={16} /></span>
+                  <span>Book Technical Scoping</span>
+                  <span className="arr"><Icon name="arrow" size={16} /></span>
                 </a>
-                <a className="btn" href="#capabilities">
-                  Explore Architecture <span>↓</span>
+                <a className="btn-byte-outline" href="#capabilities">
+                  <span>Explore Architecture ↓</span>
                 </a>
               </div>
 
@@ -69,7 +70,7 @@ export default function ServiceDetail() {
                   <span className="meta-lbl">Key Deliverables</span>
                   <div className="meta-chips">
                     {service.deliverables.map((d) => (
-                      <span key={d} className="meta-chip-alt">{d}</span>
+                      <span key={d} className="meta-chip-alt">✓ {d}</span>
                     ))}
                   </div>
                 </div>
@@ -79,15 +80,16 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* 2. ALTERNATING ARCHITECTURE & CAPABILITIES SECTION (Blutech Consulting Pattern) */}
+      {/* 2. ARCHITECTURE & CAPABILITIES PIPELINE SECTION */}
       <section id="capabilities" className="blu-capabilities-section">
         <div className="container">
-          <SectionHead
-            num="01"
-            eyebrow="Architecture & Capabilities"
-            title="How the system operates."
-            sub="A disciplined engineering pipeline from discovery through automated verification and continuous scale."
-          />
+          <div className="byte-section-head">
+            <span className="byte-section-eyebrow">ARCHITECTURE & CAPABILITIES</span>
+            <h2 className="byte-section-title">How the system operates.</h2>
+            <p className="byte-section-sub">
+              A disciplined engineering pipeline from discovery through automated verification and continuous scale.
+            </p>
+          </div>
 
           <div className="blu-al-rows">
             {service.capabilities.map((cap, idx) => {
@@ -102,6 +104,10 @@ export default function ServiceDetail() {
                     <Reveal delay={0.08}>
                       {isEven ? (
                         <div className="blu-al-box">
+                          <div className="blu-al-box-head">
+                            <span className="blu-al-dot" />
+                            <span>Active System Pipeline · Stage {cap.index}</span>
+                          </div>
                           <div className="blu-al-box-inner">
                             <ServiceDiagram
                               type={service.diagramType}
@@ -111,11 +117,11 @@ export default function ServiceDetail() {
                         </div>
                       ) : (
                         <div className="blu-al-content">
-                          <span className="blu-al-idx">{cap.index}</span>
+                          <span className="blu-al-idx">0{cap.index}</span>
                           <h3 className="blu-al-title">{cap.title}</h3>
                           <p className="blu-al-desc">{cap.desc}</p>
                           <div className="blu-al-badge">
-                            <span>Stage {cap.index} Pipeline Execution</span>
+                            <span>Stage {cap.index} Pipeline Verification</span>
                           </div>
                         </div>
                       )}
@@ -127,15 +133,19 @@ export default function ServiceDetail() {
                     <Reveal delay={0.16}>
                       {isEven ? (
                         <div className="blu-al-content">
-                          <span className="blu-al-idx">{cap.index}</span>
+                          <span className="blu-al-idx">0{cap.index}</span>
                           <h3 className="blu-al-title">{cap.title}</h3>
                           <p className="blu-al-desc">{cap.desc}</p>
                           <div className="blu-al-badge">
-                            <span>Stage {cap.index} Pipeline Execution</span>
+                            <span>Stage {cap.index} Pipeline Verification</span>
                           </div>
                         </div>
                       ) : (
                         <div className="blu-al-box">
+                          <div className="blu-al-box-head">
+                            <span className="blu-al-dot" />
+                            <span>Active System Pipeline · Stage {cap.index}</span>
+                          </div>
                           <div className="blu-al-box-inner">
                             <ServiceDiagram
                               type={service.diagramType}
@@ -156,12 +166,13 @@ export default function ServiceDetail() {
       {/* 3. RELATED SERVICES CAROUSEL */}
       <section className="blu-related-section">
         <div className="container">
-          <SectionHead
-            num="02"
-            eyebrow="Explore Further"
-            title="Related services & capabilities."
-            sub="Combine AI systems with SaaS engineering and design systems to cover your entire digital surface area."
-          />
+          <div className="byte-section-head">
+            <span className="byte-section-eyebrow">EXPLORE FURTHER</span>
+            <h2 className="byte-section-title">Related services & capabilities.</h2>
+            <p className="byte-section-sub">
+              Combine AI systems with SaaS engineering and design systems to cover your entire digital surface area.
+            </p>
+          </div>
 
           <div className="blu-related-grid">
             {relatedServices.map((rel) => (
@@ -183,10 +194,9 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* 4. PROCESS, ENGAGEMENTS & CTA */}
-      <Process num="03" />
-      <Engagements num="04" />
-      <Cta num={null} />
+      {/* 4. PROCESS & CTA */}
+      <ByteCorpProcess />
+      <Cta />
     </div>
   );
 }

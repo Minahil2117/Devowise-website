@@ -77,11 +77,8 @@ export function ByteCorpServices() {
             <div className="byte-panel-grid">
               {/* Left Column: Headline, Description & Sub-services */}
               <div className="byte-panel-content">
-                <div className="byte-panel-tag" style={{ borderColor: selectedPillar.color }}>
-                  <span
-                    className="byte-tag-dot"
-                    style={{ backgroundColor: selectedPillar.color }}
-                  />
+                <div className="byte-panel-tag">
+                  <span className="byte-tag-dot" />
                   <span>{selectedPillar.tag}</span>
                 </div>
 
@@ -101,9 +98,7 @@ export function ByteCorpServices() {
                         <span className="byte-item-title">{item.title}</span>
                         <span className="byte-item-sub">{item.desc}</span>
                       </div>
-                      <span className="byte-item-chev" style={{ color: selectedPillar.color }}>
-                        ›
-                      </span>
+                      <span className="byte-item-chev">›</span>
                     </Link>
                   ))}
                 </div>
@@ -122,11 +117,11 @@ export function ByteCorpServices() {
               <div className="byte-panel-visual">
                 <div className="byte-visual-card">
                   <div className="byte-visual-head">
-                    <span className="byte-v-badge" style={{ color: selectedPillar.color }}>
+                    <span className="byte-v-badge">
                       {selectedPillar.label} Architecture Node
                     </span>
                     <span className="byte-v-live">
-                      <span className="byte-live-dot" style={{ backgroundColor: selectedPillar.color }} />
+                      <span className="byte-live-dot" />
                       Active Pipeline
                     </span>
                   </div>
@@ -162,10 +157,7 @@ export function ByteCorpServices() {
                 }}
               >
                 <div className="mini-card-top">
-                  <span
-                    className="mini-card-indicator"
-                    style={{ backgroundColor: pillar.color }}
-                  />
+                  <span className="mini-card-indicator" />
                   <span className="mini-card-label">{pillar.label}</span>
                 </div>
                 <h4 className="mini-card-title">{pillar.headline}</h4>

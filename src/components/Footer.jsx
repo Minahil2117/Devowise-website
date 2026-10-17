@@ -84,21 +84,20 @@ export function Footer() {
         <div className="byte-foot-grid">
           {/* Brand Column */}
           <div className="byte-foot-brand">
-            <Link to="/" className="byte-foot-logo">
+            <Link to="/" className="byte-foot-logo" aria-label="Home">
               <img
                 src={logoImg || LOGO_SRC}
-                alt="Devowise logo"
+                alt="Logo"
                 onError={(e) => {
                   e.currentTarget.src = LOGO_SRC;
                 }}
               />
-              <span className="byte-brand-text">Devowise</span>
             </Link>
             <p className="byte-foot-tagline">
               We design and build AI-powered digital products that scale businesses.
             </p>
             <p className="byte-foot-motto">
-              Devowise is a product and design studio crafting SaaS, AI systems, and high-performance web experiences.
+              A product and design studio crafting SaaS, AI systems, and high-performance web experiences.
             </p>
 
             <div className="byte-foot-locations">
@@ -151,7 +150,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="byte-foot-bottom">
           <div className="byte-foot-copy">
-            © {new Date().getFullYear()} Devowise Technologies. All rights reserved.
+            © {new Date().getFullYear()} Studio Technologies. All rights reserved.
           </div>
           <div className="byte-foot-links">
             <span>Privacy Policy</span>

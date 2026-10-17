@@ -16,9 +16,9 @@ export default function StudioAbout({ num = "01" }) {
 
           <h2 className="studio-lines" aria-label={STUDIO.lines.join(" ")}>
             {STUDIO.lines.map((line, i) => (
-              <span className="mask" key={line}>
+              <span className="mask" key={line} style={{ display: "block", marginBottom: "6px" }}>
                 <motion.span
-                  className={`line ${i === 1 ? "grad-text" : ""}`}
+                  className="line"
                   initial={{ y: "110%" }}
                   whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}

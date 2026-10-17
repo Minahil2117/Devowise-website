@@ -319,7 +319,7 @@ export const BYTECORP_PILLARS = [
   {
     id: "ai-data",
     label: "AI & Data",
-    color: "#DC3514",
+    color: "#FFFFFF",
     headline: "Production AI systems, built to ship.",
     desc: "From custom LLM architectures to high-throughput data lakes: we build deterministic AI pipelines with evals, guardrails, and real-time observability.",
     tag: "Verified & Audited",
@@ -333,9 +333,9 @@ export const BYTECORP_PILLARS = [
   {
     id: "design",
     label: "Design",
-    color: "#E86EAC",
+    color: "#FFFFFF",
     headline: "Product Design users actually adopt.",
-    desc: "Interfaces that build trust and turn every interaction into revenue. Tokenized design systems and UX flows crafted for enterprise complexity.",
+    desc: "Interfaces that build trust and turn every interaction into revenue. Tokenized design systems and UX flows crafted for production scale.",
     tag: "UX / UI & Systems",
     items: [
       { num: "01", title: "UX Design Consultancy", desc: "User research, cognitive journey mapping, and interactive wireframing that remove friction from complex workflows." },
@@ -347,7 +347,7 @@ export const BYTECORP_PILLARS = [
   {
     id: "engineering",
     label: "Engineering",
-    color: "#93E3AE",
+    color: "#FFFFFF",
     headline: "Web, Mobile, and SaaS, built to scale.",
     desc: "Full-stack cloud engineering on React 19, Next.js, and edge networks. Modular, tested codebases engineered for institutional-grade reliability.",
     tag: "Full-Stack & Cloud",
@@ -362,12 +362,12 @@ export const BYTECORP_PILLARS = [
   {
     id: "security",
     label: "Security",
-    color: "#52E8F8",
+    color: "#FFFFFF",
     headline: "Security engineered in, not bolted on.",
     desc: "End-to-end cybersecurity, compliance readiness (SOC2, ISO27001), vulnerability mitigation, and infrastructure hardening for peace of mind.",
     tag: "Cybersecurity & GRC",
     items: [
-      { num: "01", title: "Governance, Risk & Compliance (GRC)", desc: "Audit frameworks, policy automation, and compliance certification support for enterprise clients." },
+      { num: "01", title: "Governance, Risk & Compliance (GRC)", desc: "Audit frameworks, policy automation, and compliance certification support for modern teams." },
       { num: "02", title: "Cloud, Network & Application Security", desc: "Zero-trust architecture, encrypted secret management, and edge firewall protections against attack vectors." },
       { num: "03", title: "Threat Monitoring & Vulnerability Management", desc: "24/7 automated vulnerability scanning, anomaly detection, and rapid incident response protocols." },
       { num: "04", title: "Security Consulting & Advisory", desc: "Senior virtual CISO advisory, technical threat modeling, and third-party vendor security audits." }
@@ -979,7 +979,7 @@ export const DIRECTORY = {
 export const STUDIO = {
   eyebrow: "About the studio",
   lines: ["Small team.", "Senior only.", "No ceremony."],
-  p: "Devowise is a small, senior team building AI and product systems for companies that take software seriously. We focus on the intersection of engineering, design and AI — shipping infrastructure, interfaces and automation that hold up under real load.",
+  p: "We are a small, senior team building AI and product systems for companies that take software seriously. We focus on the intersection of engineering, design and AI — shipping infrastructure, interfaces and automation that hold up under real load.",
   points: [
     "100% senior talent — no juniors learning on your budget",
     "Every engagement led by a principal, start to finish",
