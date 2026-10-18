@@ -377,36 +377,36 @@ export const BYTECORP_PILLARS = [
 ];
 
 export const BYTECORP_PROCESS = {
-  eyebrow: "Product Engineering Process",
-  title: "Our Product Engineering Process: Discovery, Design, Build, Scale",
+  eyebrow: "Our Process",
+  title: "A structured pipeline, not a pitch deck.",
   sub: "We think before we build — that's why our products ship. Every engagement starts with understanding the problem, not opening a text editor.",
   steps: [
     {
       num: "01",
       title: "Discovery",
       phase: "Phase 01 · Weeks 1–2",
-      desc: "Product strategy, technical architecture scoping, user research, and domain modeling. We align on measurable outcomes before committing code.",
+      desc: "Define the problem before solving it. Business goals, user needs, and technical constraints mapped into a focused product brief.",
       deliverables: ["Product Requirements Document", "System Architecture Blueprint", "Technical Feasibility Study", "Sprint Roadmap"]
     },
     {
       num: "02",
       title: "Design",
       phase: "Phase 02 · Weeks 2–4",
-      desc: "Interactive wireframes, high-fidelity prototypes, and design systems in Figma. Validated through user walkthroughs to eliminate friction early.",
+      desc: "Architect the system before writing code. UX flows, system architecture, and data models worked out before the build phase begins.",
       deliverables: ["Figma Interactive Prototype", "Design System & Tokens", "Component Library", "User Journey Flowmaps"]
     },
     {
       num: "03",
       title: "Build",
       phase: "Phase 03 · Weeks 4–10",
-      desc: "Full-stack engineering on modern cloud stacks. Weekly demos, transparent PR reviews, and automated testing to ensure software holds under load.",
+      desc: "Ship working software, sprint by sprint. CI/CD, code review, and automated testing from day one. No slide decks — only software.",
       deliverables: ["Production-Grade Codebase", "API & Database Schema", "Automated E2E Test Suite", "Multi-Tenant Cloud Deploy"]
     },
     {
       num: "04",
       title: "Scale",
       phase: "Phase 04 · Continuous",
-      desc: "Telemetry, performance optimization, unit economics audit, and security monitoring as your user base and concurrency grow.",
+      desc: "Handed over ready for 10× growth. Performance hardening, security audits, observability, and documentation built in.",
       deliverables: ["Observability & Logging", "Cost Optimization Report", "Performance SLA Guarantee", "Dedicated Support"]
     }
   ]

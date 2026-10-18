@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { HERO, STACK, CLIENTS, logoDev, LINKS } from "../data/content";
-import { Counter, EASE, Icon, Reveal, TechChip } from "./ui";
+import { HERO, CLIENTS, logoDev, LINKS } from "../data/content";
+import { Counter, EASE, Icon } from "./ui";
 
 function InteractiveHeroCanvas() {
   const canvasRef = useRef(null);
@@ -124,19 +124,6 @@ export function Hero() {
       <InteractiveHeroCanvas />
 
       <div className="container byte-hero-container">
-        {/* Top Eyebrow Pill */}
-        <motion.div
-          className="byte-hero-badge-wrap"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE }}
-        >
-          <span className="byte-hero-badge">
-            <span className="byte-badge-dot" />
-            {HERO.eyebrow}
-          </span>
-        </motion.div>
-
         {/* Main Headline */}
         <motion.h1
           className="byte-hero-title"
@@ -220,40 +207,6 @@ export function Hero() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function MarqueeRow({ tools, rev }) {
-  const doubled = [...tools, ...tools];
-  return (
-    <div className={`marquee ${rev ? "rev" : ""}`}>
-      <div className="marquee-track">
-        {doubled.map((t, i) => (
-          <TechChip name={t} key={`${t}-${i}`} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export function Stack({ num = "01" }) {
-  const half = Math.ceil(STACK.tools.length / 2);
-  return (
-    <section id="stack" className="byte-stack-section">
-      <div className="container">
-        <div className="byte-section-head">
-          <span className="byte-section-eyebrow">TECHNOLOGY & STACK</span>
-          <h2 className="byte-section-title">{STACK.title}</h2>
-          <p className="byte-section-sub">{STACK.sub}</p>
-        </div>
-        <Reveal delay={0.15}>
-          <div className="marquee-wrap">
-            <MarqueeRow tools={STACK.tools.slice(0, half)} />
-            <MarqueeRow tools={STACK.tools.slice(half)} rev />
-          </div>
-        </Reveal>
       </div>
     </section>
   );

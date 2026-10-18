@@ -1,4 +1,4 @@
-import { Hero, Stack } from "./components/Hero";
+import { Hero } from "./components/Hero";
 import { Certifications } from "./components/Showcase";
 import { Faq } from "./components/Studio";
 import { Directory, Cta } from "./components/Footer";
@@ -23,7 +23,6 @@ export function Home() {
       <ByteCorpWaves />
       <ByteCorpStudio />
       <ByteCorpTestimonials />
-      <Stack num="01" />
       <Cta />
     </>
   );
@@ -59,7 +58,6 @@ export function WorkPage() {
       />
       <ByteCorpWork limit={0} />
       <ByteCorpWaves />
-      <Stack num="01" />
       <Cta />
     </>
   );
