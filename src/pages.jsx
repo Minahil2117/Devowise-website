@@ -35,7 +35,7 @@ export function Services() {
         num="S"
         eyebrow="Services & Capabilities"
         title="AI Development, Product Design, and Software Engineering"
-        sub="Senior-led product engineering across AI systems, SaaS platforms, design, and cybersecurity."
+        sub="Senior-led product engineering across AI systems, SaaS platforms, and digital product design."
       />
       <ByteCorpServices />
       <ServicesShowcase num="01" />

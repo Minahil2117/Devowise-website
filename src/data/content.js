@@ -358,21 +358,6 @@ export const BYTECORP_PILLARS = [
       { num: "04", title: "QA & Automated Testing", desc: "End-to-end regression test suites, penetration testing, and continuous verification on every PR." }
     ],
     slug: "/services/saas-development"
-  },
-  {
-    id: "security",
-    label: "Security",
-    color: "#FFFFFF",
-    headline: "Security engineered in, not bolted on.",
-    desc: "End-to-end cybersecurity, compliance readiness (SOC2, ISO27001), vulnerability mitigation, and infrastructure hardening for peace of mind.",
-    tag: "Cybersecurity & GRC",
-    items: [
-      { num: "01", title: "Governance, Risk & Compliance (GRC)", desc: "Audit frameworks, policy automation, and compliance certification support for modern teams." },
-      { num: "02", title: "Cloud, Network & Application Security", desc: "Zero-trust architecture, encrypted secret management, and edge firewall protections against attack vectors." },
-      { num: "03", title: "Threat Monitoring & Vulnerability Management", desc: "24/7 automated vulnerability scanning, anomaly detection, and rapid incident response protocols." },
-      { num: "04", title: "Security Consulting & Advisory", desc: "Senior virtual CISO advisory, technical threat modeling, and third-party vendor security audits." }
-    ],
-    slug: "/services/elastic-infrastructure"
   }
 ];
 

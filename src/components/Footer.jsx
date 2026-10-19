@@ -117,7 +117,7 @@ export function Footer() {
               <li><Link to="/services/forward-deployed-ai-engineer">AI Consultancy & Agents</Link></li>
               <li><Link to="/services/saas-development">SaaS & Full-Stack Engineering</Link></li>
               <li><Link to="/services/branding-ui-ux-web-development">Product UX/UI Design</Link></li>
-              <li><Link to="/services/elastic-infrastructure">Security & Cloud Infrastructure</Link></li>
+              <li><Link to="/services/elastic-infrastructure">Cloud & DevOps Infrastructure</Link></li>
             </ul>
           </div>
 

@@ -147,14 +147,6 @@ export default function Navbar() {
                       <span className="byte-item-dot dot-eng" />
                       <span>Engineering</span>
                     </Link>
-                    <Link
-                      to="/services/elastic-infrastructure"
-                      className="byte-dropdown-item"
-                      onClick={() => setOpenDropdown(null)}
-                    >
-                      <span className="byte-item-dot dot-sec" />
-                      <span>Security</span>
-                    </Link>
                     <div className="byte-dropdown-divider" />
                     <Link
                       to="/services"
@@ -331,9 +323,6 @@ export default function Navbar() {
                       </Link>
                       <Link to="/services/saas-development" onClick={() => setMobileOpen(false)}>
                         <span className="byte-item-dot dot-eng" /> Engineering
-                      </Link>
-                      <Link to="/services/elastic-infrastructure" onClick={() => setMobileOpen(false)}>
-                        <span className="byte-item-dot dot-sec" /> Security
                       </Link>
                       <Link to="/services" style={{ color: "#fff", fontWeight: 600 }} onClick={() => setMobileOpen(false)}>
                         All Services →

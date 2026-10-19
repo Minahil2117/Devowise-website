@@ -20,7 +20,7 @@ export function ByteCorpServices() {
           </h2>
           <p className="byte-services-sub">
             From first sketch to live system at scale: product strategy, UX, full-stack
-            engineering, AI, and cybersecurity working as one team.
+            engineering, and AI working as one team.
           </p>
           <div className="byte-header-actions">
             <Link to="/services" className="btn-byte-outline sm">
@@ -37,7 +37,7 @@ export function ByteCorpServices() {
           </div>
         </div>
 
-        {/* 4 Pillars Nav Pills (ByteCorp Style) */}
+        {/* 3 Pillars Nav Pills (ByteCorp Style) */}
         <div className="byte-pillars-tabs">
           {BYTECORP_PILLARS.map((pillar) => {
             const isActive = activePillar === pillar.id;
@@ -132,9 +132,7 @@ export function ByteCorpServices() {
                           ? "pipeline"
                           : selectedPillar.id === "design"
                           ? "design"
-                          : selectedPillar.id === "engineering"
-                          ? "system"
-                          : "agent"
+                          : "system"
                       }
                       hovered={true}
                     />
@@ -145,7 +143,7 @@ export function ByteCorpServices() {
           </motion.div>
         </AnimatePresence>
 
-        {/* 4-Cards Grid Below (All Pillars at a Glance) */}
+        {/* 3-Cards Grid Below (All Pillars at a Glance) */}
         <div className="byte-pillars-overview-grid">
           {BYTECORP_PILLARS.map((pillar, i) => (
             <Reveal key={pillar.id} delay={i * 0.08}>
