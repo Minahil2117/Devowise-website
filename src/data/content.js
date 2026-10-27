@@ -319,7 +319,7 @@ export const BYTECORP_PILLARS = [
   {
     id: "ai-data",
     label: "AI & Data",
-    color: "#FFFFFF",
+    color: "#dc3514",
     headline: "Production AI systems, built to ship.",
     desc: "From custom LLM architectures to high-throughput data lakes: we build deterministic AI pipelines with evals, guardrails, and real-time observability.",
     tag: "Verified & Audited",
@@ -333,7 +333,7 @@ export const BYTECORP_PILLARS = [
   {
     id: "design",
     label: "Design",
-    color: "#FFFFFF",
+    color: "#e86eac",
     headline: "Product Design users actually adopt.",
     desc: "Interfaces that build trust and turn every interaction into revenue. Tokenized design systems and UX flows crafted for production scale.",
     tag: "UX / UI & Systems",
@@ -347,7 +347,7 @@ export const BYTECORP_PILLARS = [
   {
     id: "engineering",
     label: "Engineering",
-    color: "#FFFFFF",
+    color: "#93e3ae",
     headline: "Web, Mobile, and SaaS, built to scale.",
     desc: "Full-stack cloud engineering on React 19, Next.js, and edge networks. Modular, tested codebases engineered for institutional-grade reliability.",
     tag: "Full-Stack & Cloud",

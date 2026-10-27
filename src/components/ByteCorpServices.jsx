@@ -5,12 +5,12 @@ import { BYTECORP_PILLARS, LINKS } from "../data/content";
 import { Reveal, EASE } from "./ui";
 import ServiceDiagram from "./ServiceDiagram";
 
-export function ByteCorpServices() {
+export function ByteCorpServices({ isPage = false }) {
   const [activePillar, setActivePillar] = useState("ai-data");
   const selectedPillar = BYTECORP_PILLARS.find((p) => p.id === activePillar) || BYTECORP_PILLARS[0];
 
   return (
-    <section id="expertise" className="byte-services-section">
+    <section id="expertise" className={`byte-services-section ${isPage ? "as-page" : ""}`}>
       <div className="container">
         {/* Section Header */}
         <div className="byte-services-header">
@@ -23,9 +23,11 @@ export function ByteCorpServices() {
             engineering, and AI working as one team.
           </p>
           <div className="byte-header-actions">
-            <Link to="/services" className="btn-byte-outline sm">
-              View all Services →
-            </Link>
+            {!isPage && (
+              <Link to="/services" className="btn-byte-outline sm">
+                View all Services →
+              </Link>
+            )}
             <a
               href={LINKS.calendly}
               target="_blank"
@@ -77,8 +79,20 @@ export function ByteCorpServices() {
             <div className="byte-panel-grid">
               {/* Left Column: Headline, Description & Sub-services */}
               <div className="byte-panel-content">
-                <div className="byte-panel-tag">
-                  <span className="byte-tag-dot" />
+                <div
+                  className="byte-panel-tag"
+                  style={{
+                    borderColor: `${selectedPillar.color}55`,
+                    color: selectedPillar.color,
+                  }}
+                >
+                  <span
+                    className="byte-tag-dot"
+                    style={{
+                      backgroundColor: selectedPillar.color,
+                      boxShadow: `0 0 10px ${selectedPillar.color}`,
+                    }}
+                  />
                   <span>{selectedPillar.tag}</span>
                 </div>
 
@@ -117,11 +131,17 @@ export function ByteCorpServices() {
               <div className="byte-panel-visual">
                 <div className="byte-visual-card">
                   <div className="byte-visual-head">
-                    <span className="byte-v-badge">
+                    <span className="byte-v-badge" style={{ color: selectedPillar.color }}>
                       {selectedPillar.label} Architecture Node
                     </span>
                     <span className="byte-v-live">
-                      <span className="byte-live-dot" />
+                      <span
+                        className="byte-live-dot"
+                        style={{
+                          backgroundColor: selectedPillar.color,
+                          boxShadow: `0 0 8px ${selectedPillar.color}`,
+                        }}
+                      />
                       Active Pipeline
                     </span>
                   </div>
@@ -155,7 +175,13 @@ export function ByteCorpServices() {
                 }}
               >
                 <div className="mini-card-top">
-                  <span className="mini-card-indicator" />
+                  <span
+                    className="mini-card-indicator"
+                    style={{
+                      backgroundColor: pillar.color,
+                      boxShadow: `0 0 8px ${pillar.color}`,
+                    }}
+                  />
                   <span className="mini-card-label">{pillar.label}</span>
                 </div>
                 <h4 className="mini-card-title">{pillar.headline}</h4>

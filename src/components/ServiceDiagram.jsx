@@ -29,27 +29,30 @@ function PipelineDiagram({ hovered }) {
     <div className={`diag-container ${hovered ? "hovered" : ""}`}>
       <svg viewBox="0 0 420 230" className="diag-svg" preserveAspectRatio="xMidYMid meet" style={{ width: "100%", height: "240px", overflow: "visible" }}>
         <defs>
-          <filter id="whiteGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          <filter id="coralGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
         </defs>
 
         {/* Connection Edges */}
-        <path d="M 115 75 L 145 75" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 255 75 L 285 75" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 200 102 L 200 148" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 255 175 L 285 175" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 345 102 L 345 148" className="diag-edge diag-edge-dashed" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
+        <path d="M 115 75 L 145 75" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 255 75 L 285 75" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 200 102 L 200 148" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 255 175 L 285 175" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 345 102 L 345 148" className="diag-edge diag-edge-dashed" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
 
         {/* Animated Packets */}
-        <circle r="3.5" className="diag-packet" fill="#ffffff" filter="url(#whiteGlow)">
+        <circle r="4" className="diag-packet" fill="#dc3514" filter="url(#coralGlow)">
           <animateMotion path="M 115 75 L 255 75" dur="3s" repeatCount="indefinite" />
         </circle>
-        <circle r="3.5" className="diag-packet" fill="#ffffff" filter="url(#whiteGlow)">
+        <circle r="4" className="diag-packet" fill="#dc3514" filter="url(#coralGlow)">
           <animateMotion path="M 200 102 L 200 148 L 285 175" dur="3.8s" repeatCount="indefinite" />
         </circle>
-        <circle r="3.5" className="diag-packet" fill="#ffffff" filter="url(#whiteGlow)">
+        <circle r="4" className="diag-packet" fill="#dc3514" filter="url(#coralGlow)">
           <animateMotion path="M 345 102 L 345 148" dur="4.2s" repeatCount="indefinite" />
         </circle>
 
@@ -62,12 +65,12 @@ function PipelineDiagram({ hovered }) {
               width="110"
               height="48"
               rx="8"
-              fill={n.id === "orchestrator" ? "#1a1a24" : "#0d0e12"}
-              stroke={n.id === "orchestrator" ? "#ffffff" : "rgba(255,255,255,0.22)"}
+              fill={n.id === "orchestrator" ? "#1e0b08" : "#0d0e12"}
+              stroke={n.id === "orchestrator" ? "#dc3514" : "rgba(255,255,255,0.2)"}
               strokeWidth={n.id === "orchestrator" ? "1.5" : "1"}
               className={`diag-node-box ${n.id === "orchestrator" ? "accent" : ""}`}
             />
-            <circle cx="-42" cy="-2" r="3" fill="#ffffff" className="node-status-dot" />
+            <circle cx="-42" cy="-2" r="3" fill={n.id === "orchestrator" ? "#dc3514" : "#ffffff"} className="node-status-dot" />
             <text x="-32" y="-4" fill="#ffffff" fontSize="8" fontWeight="700" letterSpacing="0.04em" fontFamily="Inter, sans-serif" className="diag-node-title">
               {n.label}
             </text>
@@ -157,22 +160,25 @@ function SystemDiagram({ hovered }) {
     <div className={`diag-container ${hovered ? "hovered" : ""}`}>
       <svg viewBox="0 0 420 230" className="diag-svg" preserveAspectRatio="xMidYMid meet" style={{ width: "100%", height: "240px", overflow: "visible" }}>
         <defs>
-          <filter id="whiteGlowSys" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          <filter id="mintGlowSys" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
         </defs>
 
-        <path d="M 120 70 L 140 70" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 250 70 L 280 70" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 195 94 L 195 146" className="diag-edge diag-edge-dashed" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
-        <path d="M 335 94 L 335 146" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 250 170 L 280 170" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
+        <path d="M 120 70 L 140 70" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 250 70 L 280 70" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 195 94 L 195 146" className="diag-edge diag-edge-dashed" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
+        <path d="M 335 94 L 335 146" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 250 170 L 280 170" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
 
-        <circle r="3.5" className="diag-packet" fill="#ffffff" filter="url(#whiteGlowSys)">
+        <circle r="4" className="diag-packet" fill="#93e3ae" filter="url(#mintGlowSys)">
           <animateMotion path="M 120 70 L 280 70 L 335 94 L 335 146" dur="3.2s" repeatCount="indefinite" />
         </circle>
-        <circle r="3.5" className="diag-packet" fill="#ffffff" filter="url(#whiteGlowSys)">
+        <circle r="4" className="diag-packet" fill="#93e3ae" filter="url(#mintGlowSys)">
           <animateMotion path="M 195 94 L 195 146 L 280 170" dur="3.8s" repeatCount="indefinite" />
         </circle>
 
@@ -184,12 +190,12 @@ function SystemDiagram({ hovered }) {
               width="110"
               height="48"
               rx="8"
-              fill={n.id === "services" ? "#1a1a24" : "#0d0e12"}
-              stroke={n.id === "services" ? "#ffffff" : "rgba(255,255,255,0.22)"}
+              fill={n.id === "services" ? "#0b1b12" : "#0d0e12"}
+              stroke={n.id === "services" ? "#93e3ae" : "rgba(255,255,255,0.2)"}
               strokeWidth={n.id === "services" ? "1.5" : "1"}
               className={`diag-node-box ${n.id === "services" ? "accent" : ""}`}
             />
-            <circle cx="-42" cy="-2" r="3" fill="#ffffff" className="node-status-dot" />
+            <circle cx="-42" cy="-2" r="3" fill={n.id === "services" ? "#93e3ae" : "#ffffff"} className="node-status-dot" />
             <text x="-32" y="-4" fill="#ffffff" fontSize="8" fontWeight="700" letterSpacing="0.04em" fontFamily="Inter, sans-serif" className="diag-node-title">
               {n.label}
             </text>
@@ -217,22 +223,25 @@ function DesignDiagram({ hovered }) {
     <div className={`diag-container ${hovered ? "hovered" : ""}`}>
       <svg viewBox="0 0 420 230" className="diag-svg" preserveAspectRatio="xMidYMid meet" style={{ width: "100%", height: "240px", overflow: "visible" }}>
         <defs>
-          <filter id="whiteGlowDesign" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          <filter id="roseGlowDesign" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
         </defs>
 
-        <path d="M 125 75 L 155 75" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 265 75 L 290 75" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 210 99 L 210 151" className="diag-edge diag-edge-dashed" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
-        <path d="M 345 99 L 345 151" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-        <path d="M 265 175 L 290 175" className="diag-edge" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
+        <path d="M 125 75 L 155 75" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 265 75 L 290 75" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 210 99 L 210 151" className="diag-edge diag-edge-dashed" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
+        <path d="M 345 99 L 345 151" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
+        <path d="M 265 175 L 290 175" className="diag-edge" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
 
-        <circle r="3.5" className="diag-packet" fill="#ffffff" filter="url(#whiteGlowDesign)">
+        <circle r="4" className="diag-packet" fill="#e86eac" filter="url(#roseGlowDesign)">
           <animateMotion path="M 125 75 L 290 75 L 345 99 L 345 151" dur="3s" repeatCount="indefinite" />
         </circle>
-        <circle r="3.5" className="diag-packet" fill="#ffffff" filter="url(#whiteGlowDesign)">
+        <circle r="4" className="diag-packet" fill="#e86eac" filter="url(#roseGlowDesign)">
           <animateMotion path="M 210 99 L 210 151 L 290 175" dur="3.6s" repeatCount="indefinite" />
         </circle>
 
@@ -244,12 +253,12 @@ function DesignDiagram({ hovered }) {
               width="110"
               height="48"
               rx="8"
-              fill={n.id === "components" ? "#1a1a24" : "#0d0e12"}
-              stroke={n.id === "components" ? "#ffffff" : "rgba(255,255,255,0.22)"}
+              fill={n.id === "components" ? "#1e0b17" : "#0d0e12"}
+              stroke={n.id === "components" ? "#e86eac" : "rgba(255,255,255,0.2)"}
               strokeWidth={n.id === "components" ? "1.5" : "1"}
               className={`diag-node-box ${n.id === "components" ? "accent" : ""}`}
             />
-            <circle cx="-42" cy="-2" r="3" fill="#ffffff" className="node-status-dot" />
+            <circle cx="-42" cy="-2" r="3" fill={n.id === "components" ? "#e86eac" : "#ffffff"} className="node-status-dot" />
             <text x="-32" y="-4" fill="#ffffff" fontSize="8" fontWeight="700" letterSpacing="0.04em" fontFamily="Inter, sans-serif" className="diag-node-title">
               {n.label}
             </text>

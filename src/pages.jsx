@@ -31,13 +31,7 @@ export function Home() {
 export function Services() {
   return (
     <>
-      <PageHero
-        num="S"
-        eyebrow="Services & Capabilities"
-        title="AI Development, Product Design, and Software Engineering"
-        sub="Senior-led product engineering across AI systems, SaaS platforms, and digital product design."
-      />
-      <ByteCorpServices />
+      <ByteCorpServices isPage={true} />
       <ServicesShowcase num="01" />
       <ByteCorpProcess />
       <Certifications num="02" />
