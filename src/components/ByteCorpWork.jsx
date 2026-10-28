@@ -2,13 +2,12 @@ import { Link } from "react-router-dom";
 import { WORK, projectSlug } from "../data/content";
 import { Reveal } from "./ui";
 
-export function ByteCorpWork({ limit = 6 }) {
+export function ByteCorpWork({ limit = 6, isPage = false }) {
   const projects = limit ? WORK.projects.slice(0, limit) : WORK.projects;
 
   return (
-    <section id="work" className="byte-work-section">
+    <section id="work" className={`byte-work-section ${isPage ? "as-page" : ""}`}>
       <div className="container">
-        {/* Section Header */}
         {/* Section Header */}
         <div className="byte-work-header">
           <span className="byte-section-eyebrow">CASE STUDIES & IMPACT</span>
@@ -18,14 +17,16 @@ export function ByteCorpWork({ limit = 6 }) {
           <p className="byte-section-sub">
             A curated selection of production systems, SaaS platforms, and AI applications shipped for our clients.
           </p>
-          <div className="byte-work-actions">
-            <Link to="/work" className="btn-byte-outline sm">
-              <span>See All Case Studies</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
+          {!isPage && (
+            <div className="byte-work-actions">
+              <Link to="/work" className="btn-byte-outline sm">
+                <span>See All Case Studies</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Case Studies Grid */}

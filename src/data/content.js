@@ -489,10 +489,10 @@ export const SERVICES = [
   {
     icon: "pulse",
     slug: "mvp-doctor",
-    title: "MVP Doctor",
+    title: "MVP Technical Audit & Diagnostic",
     domain: "data-ai",
     domainLabel: "Data & AI",
-    desc: "Free AI-powered readiness report for your startup.",
+    desc: "Comprehensive AI & architecture readiness assessment for your product.",
     tagline: "Audit performance, prompt stability, and architectural vulnerabilities before real users or investors find the gaps.",
     diagramType: "pipeline",
     tools: ["OpenAI", "Python", "LangChain", "Sentry", "PostgreSQL"],
@@ -864,7 +864,7 @@ export const SERVICES = [
 
 
 export const SITUATIONS = [
-  { route: "Fix it", num: "01", quote: "“The MVP works, but I do not trust it.”", desc: "Get a free AI-powered readiness report before real users, scale, or diligence finds the gap.", start: "MVP Doctor", to: "/services/mvp-doctor", timing: "Start now" },
+  { route: "Fix it", num: "01", quote: "“The MVP works, but I do not trust it.”", desc: "Get an AI-powered architecture readiness report before real users, scale, or diligence finds the gap.", start: "MVP Technical Audit", to: "/services/mvp-doctor", timing: "Start now" },
   { route: "Fix it", num: "02", quote: "“We built it with AI tools — now it needs to be production-grade.”", desc: "Scope and timeline are confirmed after a technical review, then we harden it for real traffic.", start: "AI Prototype Hardening", to: "/services/ai-prototype-hardening", timing: "Review first" },
   { route: "Build it right", num: "03", quote: "“We are starting a new product.”", desc: "Scoping, architecture and design decisions made while they are still inexpensive to change.", start: "SaaS Development", to: "/services/saas-development", timing: "Before implementation" },
   { route: "Build it right", num: "04", quote: "“Traffic is growing and the platform is creaking.”", desc: "High-concurrency web platforms and robust API orchestration that hold up past the demo.", start: "Next.js Platform Engineering", to: "/services/next-js-platform-engineering", timing: "Before scale" },

@@ -95,9 +95,9 @@ export function Faq({ num = "03" }) {
           {FAQ.items.map((f, i) => (
             <div className={`faq-item ${open === i ? "open" : ""}`} key={f.q}>
               <button className="faq-q" onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i}>
-                <span>
-                  <span className="q-idx">/{String(i + 1).padStart(2, "0")}</span>
-                  {f.q}
+                <span className="faq-q-text">
+                  <span className="q-idx">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="q-title">{f.q}</span>
                 </span>
                 <span className="fx"><Icon name="plus" size={16} /></span>
               </button>

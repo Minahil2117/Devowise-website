@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { LINKS } from "../data/content";
-import { EASE, Icon, Reveal } from "./ui";
+import { Reveal } from "./ui";
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -9,8 +8,10 @@ export default function ContactSection() {
   const [copied, setCopied] = useState(false);
 
   const mailto = () => {
-    const subject = encodeURIComponent(`Project inquiry from ${form.name || "your website"}`);
-    const body = encodeURIComponent(`${form.message}\n\n— ${form.name}\n${form.email}`);
+    const subject = encodeURIComponent(`Project Scoping Inquiry: ${form.name || "New Build"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nProject Scope & Architecture Details:\n${form.message}`
+    );
     return `mailto:${LINKS.email}?subject=${subject}&body=${body}`;
   };
 
@@ -22,60 +23,175 @@ export default function ContactSection() {
 
   const copyMsg = async () => {
     try {
-      await navigator.clipboard.writeText(`${form.message}\n\n— ${form.name}\n${form.email}`);
+      await navigator.clipboard.writeText(
+        `Name: ${form.name}\nEmail: ${form.email}\n\nScope:\n${form.message}`
+      );
       setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch { /* clipboard unavailable */ }
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard fallback */
+    }
   };
 
   return (
-    <section id="contact">
+    <section id="contact" className="byte-contact-section">
       <div className="container">
-        <div className="contact-grid">
+        <div className="byte-contact-grid">
+          {/* Left Column: Direct Message / Project Scoping Form */}
           <Reveal>
-            <form className="contact-form" onSubmit={submit}>
-              <div className="field">
-                <label htmlFor="cf-name">Full Name</label>
-                <input id="cf-name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" />
+            <div className="contact-form-box">
+              <div className="contact-box-header">
+                <span className="contact-badge">
+                  <span className="contact-dot" />
+                  Direct Technical Inquiry
+                </span>
+                <h3 className="contact-box-title">Send Us Your Scope</h3>
+                <p className="contact-box-desc">
+                  Tell us about your product, roadmap, or architecture bottlenecks. A principal engineer will review and reply within 4 business hours.
+                </p>
               </div>
-              <div className="field">
-                <label htmlFor="cf-email">Email</label>
-                <input id="cf-email" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" />
-              </div>
-              <div className="field">
-                <label htmlFor="cf-msg">Project Details</label>
-                <textarea id="cf-msg" rows={6} required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell us about the problem, scope, and timeline…" />
-              </div>
-              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="btn btn-solid" type="submit">
-                Send Message <span className="arr"><Icon name="arrow" size={16} /></span>
-              </motion.button>
-              {sent && (
-                <div className="sent-note">
-                  <p>
-                    <strong>Almost there.</strong> Your email app should have opened with everything pre-filled.
-                    If it didn't, send it directly to <a href={`mailto:${LINKS.email}`}>{LINKS.email}</a> or copy your message below.
-                  </p>
-                  <div className="hero-ctas">
-                    <a className="btn" href={mailto()}>Open email app</a>
-                    <button className="btn" type="button" onClick={copyMsg}>{copied ? "Copied ✓" : "Copy message"}</button>
-                  </div>
-                </div>
-              )}
-            </form>
-          </Reveal>
 
-          <Reveal delay={0.12}>
-            <div className="contact-cards">
-              <div className="contact-card">
-                <span className="k">Email</span>
-                <a className="v" href={`mailto:${LINKS.email}`}>{LINKS.email}</a>
-              </div>
-              <div className="contact-card">
-                <span className="k">Book a Call</span>
-                <a className="v" href={LINKS.calendly} target="_blank" rel="noreferrer">calendly.com/devowise — 30 min</a>
-              </div>
+              <form className="byte-contact-form" onSubmit={submit}>
+                <div className="form-group">
+                  <label htmlFor="cf-name" className="form-label">
+                    Full Name <span className="req">*</span>
+                  </label>
+                  <input
+                    id="cf-name"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="e.g. Alex Morgan"
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="cf-email" className="form-label">
+                    Work Email <span className="req">*</span>
+                  </label>
+                  <input
+                    id="cf-email"
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="alex@company.com"
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="cf-msg" className="form-label">
+                    Project Details & Technical Scope <span className="req">*</span>
+                  </label>
+                  <textarea
+                    id="cf-msg"
+                    rows={5}
+                    required
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Tell us about the problem, stack requirements, target launch date, and budget…"
+                    className="form-textarea"
+                  />
+                </div>
+
+                <button type="submit" className="btn-byte-primary full-width contact-submit-btn">
+                  <span>Send Technical Scope</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                <p className="form-privacy-note">
+                  🔒 No sales spam or intermediaries. All inquiries are covered under our mutual NDA policy.
+                </p>
+
+                {sent && (
+                  <div className="contact-sent-card">
+                    <div className="sent-head">
+                      <span className="sent-check">✓</span>
+                      <div>
+                        <strong>Inquiry Prepared</strong>
+                        <p>Your default mail client should have opened. If not, click below or copy message.</p>
+                      </div>
+                    </div>
+                    <div className="sent-actions">
+                      <a className="btn-byte-outline sm" href={mailto()}>
+                        Open Mail App ↗
+                      </a>
+                      <button className="btn-byte-outline sm" type="button" onClick={copyMsg}>
+                        {copied ? "Copied ✓" : "Copy Details"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </form>
             </div>
           </Reveal>
+
+          {/* Right Column: Fast-Track Scoping Call & Direct Contact Info */}
+          <div className="contact-info-col">
+            {/* Scoping Call Card (Primary) */}
+            <Reveal delay={0.08}>
+              <div className="contact-card primary-card">
+                <div className="card-top-badge">
+                  <span className="live-pulse-dot" />
+                  FAST-TRACK DISCOVERY
+                </div>
+                <h4 className="card-title">Book a 30-Min Scoping Session</h4>
+                <p className="card-desc">
+                  Prefer to talk live? Schedule a direct 30-minute technical session with our principal engineers. We review your architecture, evaluate feasibility, and provide sprint estimates.
+                </p>
+                <div className="card-meta">
+                  <div className="meta-item">
+                    <span className="meta-icon">✓</span>
+                    <span>Direct engineering review (no sales reps)</span>
+                  </div>
+                  <div className="meta-item">
+                    <span className="meta-icon">✓</span>
+                    <span>High-level roadmap & feasibility estimate</span>
+                  </div>
+                  <div className="meta-item">
+                    <span className="meta-icon">✓</span>
+                    <span>Strict confidentiality / NDA protected</span>
+                  </div>
+                </div>
+                <a
+                  href={LINKS.calendly}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-byte-primary full-width"
+                >
+                  <span>Schedule on Calendly</span>
+                  <span className="duration-tag">30 min</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </Reveal>
+
+            {/* Direct Email Card */}
+            <Reveal delay={0.14}>
+              <div className="contact-card sub-card">
+                <div className="sub-card-header">
+                  <div className="icon-wrap">✉</div>
+                  <div>
+                    <span className="sub-label">DIRECT INBOX</span>
+                    <h5 className="sub-title">Engineering & RFP</h5>
+                  </div>
+                </div>
+                <p className="sub-desc">
+                  Have an existing RFP, Figma file, or architectural document? Send it directly to our team.
+                </p>
+                <a className="contact-link-row" href={`mailto:${LINKS.email}`}>
+                  <span className="link-val">{LINKS.email}</span>
+                  <span className="link-arrow">↗</span>
+                </a>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

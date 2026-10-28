@@ -44,13 +44,7 @@ export function Services() {
 export function WorkPage() {
   return (
     <>
-      <PageHero
-        num="W"
-        eyebrow="Case Studies"
-        title="Products we’ve built and the results they delivered."
-        sub="A curated selection of production systems, SaaS platforms, and AI applications shipped for our clients."
-      />
-      <ByteCorpWork limit={0} />
+      <ByteCorpWork limit={0} isPage={true} />
       <ByteCorpWaves />
       <Cta />
     </>
@@ -74,9 +68,9 @@ export function ContactPage() {
     <>
       <PageHero
         num="C"
-        eyebrow="Contact"
+        eyebrow="Contact & Technical Scoping"
         title="Got a product to build?"
-        sub="Book a 30-minute brainstorming session with our senior engineers."
+        sub="Book a 30-minute scoping session with our senior engineers, or submit your project details below."
       />
       <ContactSection />
     </>
